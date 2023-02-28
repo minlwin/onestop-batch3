@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,8 +38,23 @@ public class DivisionService {
 	}
 
 	public List<Division> search(Optional<Integer> type, Optional<String> keyword) {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.findAll(whichType(type).and(whichKeyword(keyword)));
 	}
+	
+	private Specification<Division> whichType(Optional<Integer> data) {
+		// d.type.id = ?
+		return data.isEmpty() ? Specification.where(null) : 
+			(root, query, cb) -> cb.equal(root.get("type").get("id"), data.get());
+	}
+	
+	private Specification<Division> whichKeyword(Optional<String> data) {
+		// lower(d.name) like ? or d.burmese like ?
+		return data.isEmpty() ? Specification.where(null) :
+			(root, query, cb) -> cb.or(
+					cb.like(cb.lower(root.get("name")), data.get().toLowerCase().concat("%")),
+					cb.like(root.get("burmese"), data.get().concat("%"))
+			);
+	}
+	
 
 }
