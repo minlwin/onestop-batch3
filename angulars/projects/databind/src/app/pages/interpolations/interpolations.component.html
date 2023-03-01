@@ -1,0 +1,17 @@
+<div class="row">
+
+  <div class="col-3">
+    <!-- Side Bar -->
+    <div class="list-group">
+      <span class="list-group-item list-group-item-info">Text Interpolation</span>
+      <a [routerLink]="['/inter/props']" routerLinkActive="active" class="list-group-item">Component's Properties</a>
+      <a [routerLink]="['/inter/inputs']" routerLinkActive="active" class="list-group-item">Input Variables</a>
+      <a [routerLink]="['/inter/refs']" routerLinkActive="active" class="list-group-item">Template References</a>
+    </div>
+  </div>
+
+  <div class="col">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
