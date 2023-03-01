@@ -1,1 +1,56 @@
-<p>comp-properties works!</p>
+<div class="card mb-4">
+  <div class="card-body">
+    <h5 class="card-title">Simple Value</h5>
+    <p>{{message}}</p>
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h5 class="card-title">Array Value</h5>
+    <ul>
+      <li *ngFor="let item of array">{{item}}</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h5 class="card-title">Object Value</h5>
+
+    <table class="table w-50">
+      <thead>
+        <tr>
+          <th>Field Name</th>
+          <th>Field Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ID</td>
+          <td>{{course.id}}</td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>{{course.name}}</td>
+        </tr>
+        <tr>
+          <td>Duration</td>
+          <td>{{course.months}} Months</td>
+        </tr>
+        <tr>
+          <td>Fees</td>
+          <td>{{course.fees}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Function Type Value</h5>
+    <p>10 + 20 = {{add(10, 20)}}</p>
+  </div>
+</div>

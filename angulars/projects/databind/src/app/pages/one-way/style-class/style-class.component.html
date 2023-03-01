@@ -1,1 +1,15 @@
-<p>style-class works!</p>
+<div class="card">
+  <div class="card-header">Class Binding</div>
+  <div  [class]="cardBodyClass" [class.text-light]="status"
+    [class.bg-info]="status == 'info'"
+    [class.bg-success]="status == 'warning'"
+    [class.bg-danger]="status == 'error'"
+    >
+    <h5>Class Binding Demo</h5>
+  </div>
+  <div class="card-footer">
+    <button (click)="setStatus('info')" class="btn btn-primary me-2">Make Info</button>
+    <button (click)="setStatus('warning')" class="btn btn-success me-2">Warning</button>
+    <button (click)="setStatus('error')" class="btn btn-danger me-2">Error</button>
+  </div>
+</div>

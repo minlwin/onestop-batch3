@@ -1,1 +1,10 @@
-<p>attributes works!</p>
+<h3>Attribute Binding</h3>
+
+<input #slider (change)="0" type="range" style="width: 400px"
+  [attr.aria-valuemin]="min"
+  [attr.aria-valuemax]="max"
+  [attr.aria-valuenow]="current" >
+
+<div>
+  {{slider.value}}
+</div>

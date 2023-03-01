@@ -1,1 +1,18 @@
-<p>properties works!</p>
+<!-- DOM Properties -->
+<div class="card mb-4">
+  <div class="card-header">DOM Properties</div>
+  <div class="card-body" [style]="background">
+    <h3>DOM Properties</h3>
+  </div>
+</div>
+
+<!-- Directive Properties -->
+<div class="card mb-4">
+  <div class="card-header">Directive Properties</div>
+  <div [appBackColor]="hightlight" class="card-body">
+    This is Directive Properties Demo
+  </div>
+</div>
+
+<!-- Component's Input -->
+<app-card [title]="cardTitle" message="This is Message for Card"></app-card>

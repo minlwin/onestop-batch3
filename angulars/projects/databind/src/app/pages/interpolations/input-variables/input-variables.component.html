@@ -1,1 +1,19 @@
-<p>input-variables works!</p>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Months</th>
+      <th>Fees</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of list">
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.months}} Months</td>
+      <td>{{item.fees}}</td>
+    </tr>
+  </tbody>
+</table>

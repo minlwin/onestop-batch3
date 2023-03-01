@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class StyleClassComponent {
 
+  status: Status = 'info'
+
+  cardBodyClass = 'card-body bg-info'
+
+  setStatus(value: Status) {
+    this.status = value
+  }
 }
+
+declare type Status = 'info' | 'warning' |'error'

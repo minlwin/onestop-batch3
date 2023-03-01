@@ -1,1 +1,12 @@
-<p>temp-references works!</p>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Template References</h5>
+
+    <form action="#">
+      <label class="form-label">Message</label>
+      <input #message type="text" (keyup)="0" class="form-control" placeholder="Enter Message">
+    </form>
+
+    <p class="mt-4">{{message.value}}</p>
+  </div>
+</div>

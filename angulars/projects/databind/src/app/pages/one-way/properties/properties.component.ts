@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class PropertiesComponent {
 
+  background = 'background-color:silver'
+
+  cardTitle = "Component Properties"
+
+  hightlight = "green"
 }

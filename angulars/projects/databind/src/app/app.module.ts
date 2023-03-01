@@ -13,6 +13,8 @@ import { EventsComponent } from './pages/one-way/events/events.component';
 import { CompPropertiesComponent } from './pages/interpolations/comp-properties/comp-properties.component';
 import { InputVariablesComponent } from './pages/interpolations/input-variables/input-variables.component';
 import { TempReferencesComponent } from './pages/interpolations/temp-references/temp-references.component';
+import { CardComponent } from './pages/one-way/properties/card/card.component';
+import { BackColorDirective } from './pages/one-way/properties/back-color.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { TempReferencesComponent } from './pages/interpolations/temp-references/
     EventsComponent,
     CompPropertiesComponent,
     InputVariablesComponent,
-    TempReferencesComponent
+    TempReferencesComponent,
+    CardComponent,
+    BackColorDirective
   ],
   imports: [
     BrowserModule,
