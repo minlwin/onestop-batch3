@@ -2,78 +2,78 @@
 
 <div class="calculator p-1">
   <div class="display d-flex justify-content-end p-1">
-    <span>0</span>
+    <span>{{current}}</span>
   </div>
 
   <div class="row gx-1 mt-1">
     <div class="col">
-      <app-cal-button text="AC"></app-cal-button>
+      <app-cal-button text="AC" (action)="clear()"></app-cal-button>
     </div>
     <div class="col">
-      <app-cal-button text="+/-"></app-cal-button>
+      <app-cal-button text="+/-" (action)="plusOrMinus()"></app-cal-button>
     </div>
     <div class="col">
-      <app-cal-button text="%"></app-cal-button>
+      <app-cal-button text="%" (action)="doPercent()"></app-cal-button>
     </div>
     <div class="col">
-      <app-cal-button text="/" color="orange"></app-cal-button>
-    </div>
-  </div>
-
-  <div class="row gx-1 mt-1">
-    <div class="col">
-      <app-cal-button text="7"></app-cal-button>
-    </div>
-    <div class="col">
-      <app-cal-button text="8"></app-cal-button>
-    </div>
-    <div class="col">
-      <app-cal-button text="9"></app-cal-button>
-    </div>
-    <div class="col">
-      <app-cal-button text="*" color="orange"></app-cal-button>
+      <app-cal-button [text]="'\u00f7'" (action)="pressOperator($event)" color="orange"></app-cal-button>
     </div>
   </div>
 
   <div class="row gx-1 mt-1">
     <div class="col">
-      <app-cal-button text="4"></app-cal-button>
+      <app-cal-button text="7" (action)="pressNumber($event)"></app-cal-button>
     </div>
     <div class="col">
-      <app-cal-button text="5"></app-cal-button>
+      <app-cal-button text="8" (action)="pressNumber($event)"></app-cal-button>
     </div>
     <div class="col">
-      <app-cal-button text="6"></app-cal-button>
+      <app-cal-button text="9" (action)="pressNumber($event)"></app-cal-button>
     </div>
     <div class="col">
-      <app-cal-button text="-" color="orange"></app-cal-button>
+      <app-cal-button [text]="'\u00d7'" (action)="pressOperator($event)" color="orange"></app-cal-button>
     </div>
   </div>
 
   <div class="row gx-1 mt-1">
     <div class="col">
-      <app-cal-button text="1"></app-cal-button>
+      <app-cal-button text="4" (action)="pressNumber($event)"></app-cal-button>
     </div>
     <div class="col">
-      <app-cal-button text="2"></app-cal-button>
+      <app-cal-button text="5" (action)="pressNumber($event)"></app-cal-button>
     </div>
     <div class="col">
-      <app-cal-button text="3"></app-cal-button>
+      <app-cal-button text="6" (action)="pressNumber($event)"></app-cal-button>
     </div>
     <div class="col">
-      <app-cal-button text="+" color="orange"></app-cal-button>
+      <app-cal-button text="-" (action)="pressOperator($event)" color="orange"></app-cal-button>
+    </div>
+  </div>
+
+  <div class="row gx-1 mt-1">
+    <div class="col">
+      <app-cal-button text="1" (action)="pressNumber($event)"></app-cal-button>
+    </div>
+    <div class="col">
+      <app-cal-button text="2" (action)="pressNumber($event)"></app-cal-button>
+    </div>
+    <div class="col">
+      <app-cal-button text="3" (action)="pressNumber($event)"></app-cal-button>
+    </div>
+    <div class="col">
+      <app-cal-button text="+" (action)="pressOperator($event)" color="orange"></app-cal-button>
     </div>
   </div>
 
   <div class="row gx-1 mt-1">
     <div class="col-6">
-      <app-cal-button text="0" color="orange"></app-cal-button>
+      <app-cal-button text="0" (action)="pressNumber($event)" color="orange"></app-cal-button>
     </div>
     <div class="col">
-      <app-cal-button text="." color="orange"></app-cal-button>
+      <app-cal-button text="." (action)="doDecimal()" color="orange"></app-cal-button>
     </div>
     <div class="col">
-      <app-cal-button text="=" color="orange"></app-cal-button>
+      <app-cal-button text="=" (action)="calculate()" color="orange"></app-cal-button>
     </div>
   </div>
 </div>

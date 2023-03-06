@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cal-button',
@@ -15,6 +15,9 @@ export class CalButtonComponent {
   @Input()
   color?:string
 
+  @Output()
+  action = new EventEmitter
+
   fontSize = '1.2rem'
 
   radius = '8px'
@@ -27,6 +30,10 @@ export class CalButtonComponent {
   mouseOut() {
     this.fontSize = '1.2rem'
     this.radius = '8px'
+  }
+
+  pressButton() {
+    this.action.emit(this.text)
   }
 
 }
