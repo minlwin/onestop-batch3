@@ -11,22 +11,22 @@ export class EventsComponent {
   current = '0'
   private lastOpe?:Operator
   private lastValue = 0.0
-  private recalculate = false
+  private calculated = false
 
   clear() {
     this.current = '0'
     this.lastOpe = undefined
     this.lastValue = 0.0
-    this.recalculate = false
+    this.calculated = false
   }
 
   pressNumber(value:string) {
-    if(this.current == '0' || this.recalculate) {
+    if(this.current == '0' || this.calculated) {
       this.current = value
     } else {
       this.current += value
     }
-    this.recalculate = false
+    this.calculated = false
   }
 
   doDecimal() {
@@ -46,17 +46,23 @@ export class EventsComponent {
   }
 
   doPercent() {
-
+    this.calculate()
+    let value = Number.parseFloat(this.current) / 100
+    this.current = Number.parseFloat(value.toFixed(9)).toString()
   }
 
   calculate() {
+    if(!this.calculated) {
+      this.calculateInternal(this.lastValue, Number.parseFloat(this.current), this.lastOpe)
+    }
 
+    this.lastOpe = undefined
+    this.lastValue = 0.0
   }
 
   pressOperator(value:Operator) {
     this.calculateInternal(this.lastValue, Number.parseFloat(this.current), this.lastOpe)
     this.lastOpe = value
-    this.recalculate = true
   }
 
   private calculateInternal(digit1:any, digit2:any, ope:any) {
@@ -76,8 +82,9 @@ export class EventsComponent {
       break
     }
 
-    this.current = value.toString()
-    this.lastValue = value
+    this.current = Number.parseFloat(value.toFixed(9)).toString()
+    this.lastValue = Number.parseFloat(this.current)
+    this.calculated = true
   }
 }
 
