@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+
+.divStyle {
+  border-color: red;
+  border-style: dashed;
+  border-width: 1px;
+  border-radius: 16px;
+}

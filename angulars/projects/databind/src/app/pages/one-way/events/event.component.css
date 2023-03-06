@@ -1,0 +1,9 @@
+.calculator {
+  width: 240px;
+  background-color: black;
+}
+
+.display span{
+  color: white;
+  font-size: 2rem;
+}

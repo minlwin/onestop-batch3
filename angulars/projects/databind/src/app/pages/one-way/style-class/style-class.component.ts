@@ -14,6 +14,20 @@ export class StyleClassComponent {
   setStatus(value: Status) {
     this.status = value
   }
+
+  bgColor = 'blue'
+
+
+  divStyle = {
+    "border-color" : 'red',
+    "border-style" : 'dashed',
+    "border-width" : '2px',
+    "border-radius" : '16px'
+  }
+
+  switchBackgroundColor() {
+    this.bgColor = this.bgColor == 'blue' ? 'red' : 'blue'
+  }
 }
 
 declare type Status = 'info' | 'warning' |'error'
