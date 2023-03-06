@@ -1,3 +1,6 @@
-<div [style.background-color]="color || 'teal'">
+<div (mouseenter)="mouseOn()" (mouseleave)="mouseOut()"
+  [style.background-color]="color || 'teal'"
+  [style.border-radius]="radius"
+  [style.font-size]="fontSize">
   {{text}}
 </div>

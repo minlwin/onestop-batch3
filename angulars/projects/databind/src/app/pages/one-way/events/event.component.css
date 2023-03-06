@@ -1,6 +1,7 @@
 .calculator {
   width: 240px;
   background-color: black;
+  border-radius: 8px;
 }
 
 .display span{
