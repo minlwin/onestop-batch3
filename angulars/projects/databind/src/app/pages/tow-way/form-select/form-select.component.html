@@ -1,0 +1,11 @@
+<div class="mb-3">
+  <label class="form-label">
+    {{label}}
+  </label>
+
+  <select #input class="form-select" (change)="changeValue(input.value)">
+    <option value="">Select One</option>
+    <option *ngFor="let item of list" [selected]="item == value"
+      [value]="item">{{item}}</option>
+  </select>
+</div>

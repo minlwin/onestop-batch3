@@ -1,1 +1,23 @@
-<p>tow-way works!</p>
+<h3>Tow Way Data Binding</h3>
+
+<div class="row">
+  <div class="col">
+    <app-card-content title="Two Way Component">
+      <app-form-input [(value)]="data.name" label="Name" />
+
+      <app-form-input label="Phone Number" type="tel" [(value)]="data.phone" />
+
+      <app-form-select label="Subject"
+        [(value)]="data.subject" [list]="subjects" />
+
+      <app-form-select label="Last Education"
+        [(value)]="data.education" [list]="educations"/>
+
+    </app-card-content>
+  </div>
+  <div class="col">
+    <app-card-content title="Output Data">
+      <pre>{{data | json}}</pre>
+    </app-card-content>
+  </div>
+</div>

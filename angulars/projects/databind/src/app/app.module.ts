@@ -16,6 +16,9 @@ import { TempReferencesComponent } from './pages/interpolations/temp-references/
 import { CardComponent } from './pages/one-way/properties/card/card.component';
 import { BackColorDirective } from './pages/one-way/properties/back-color.directive';
 import { CalButtonComponent } from './pages/one-way/events/cal-button/cal-button.component';
+import { CardContentComponent } from './pages/tow-way/card-content/card-content.component';
+import { FormInputComponent } from './pages/tow-way/form-input/form-input.component';
+import { FormSelectComponent } from './pages/tow-way/form-select/form-select.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { CalButtonComponent } from './pages/one-way/events/cal-button/cal-button
     TempReferencesComponent,
     CardComponent,
     BackColorDirective,
-    CalButtonComponent
+    CalButtonComponent,
+    CardContentComponent,
+    FormInputComponent,
+    FormSelectComponent
   ],
   imports: [
     BrowserModule,
