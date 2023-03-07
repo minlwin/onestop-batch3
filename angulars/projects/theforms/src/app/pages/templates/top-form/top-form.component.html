@@ -1,14 +1,44 @@
-<widget-card title="Form Template" bottom="1rem">
+<div class="row">
+  <div class="col">
+    <widget-card title="Form Template" >
 
-  <form #demoForm="ngForm">
-    <div class="mb-3">
-      <label class="form-label">Name</label>
-      <input type="text" ngModel name="name" placeholder="Enter Name" class="form-control">
-    </div>
-  </form>
+      <form #demoForm="ngForm" (ngSubmit)="saveData(demoForm.value)">
 
-</widget-card>
+        <widget-form-item label="Name">
+          <input type="text" class="form-control"
+            ngModel name="name" placeholder="Enter Name">
+        </widget-form-item>
 
-<widget-card title="Output Value">
-  <pre>{{demoForm.value | json}}</pre>
-</widget-card>
+        <fieldset ngModelGroup="contact">
+
+          <widget-form-item label="Phone">
+            <input type="tel" class="form-control"
+              ngModel name="phone" placeholder="Enter Phone">
+          </widget-form-item>
+
+          <widget-form-item label="Email">
+            <input type="email" class="form-control"
+              ngModel name="email" placeholder="Enter Email">
+          </widget-form-item>
+
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+
+    </widget-card>
+  </div>
+  <div class="col">
+    <widget-card title="Output Value">
+      <pre>{{demoForm.value | json}}</pre>
+    </widget-card>
+  </div>
+
+  <div class="col">
+    <widget-card title="Submitted Value">
+      <pre>{{submittedData | json}}</pre>
+    </widget-card>
+  </div>
+</div>
+
+

@@ -10,6 +10,7 @@ import { TopFormComponent } from './pages/templates/top-form/top-form.component'
 import { GroupFormComponent } from './pages/templates/group-form/group-form.component';
 import { TemplateDataBindComponent } from './pages/templates/template-data-bind/template-data-bind.component';
 import { CardComponent } from './widgets/card/card.component';
+import { FormItemComponent } from './widgets/form-item/form-item.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CardComponent } from './widgets/card/card.component';
     TopFormComponent,
     GroupFormComponent,
     TemplateDataBindComponent,
-    CardComponent
+    CardComponent,
+    FormItemComponent
   ],
   imports: [
     BrowserModule,

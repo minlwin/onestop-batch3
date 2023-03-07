@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class TopFormComponent {
 
+  submittedData:any
+
+  saveData(data:any) {
+    this.submittedData = data
+  }
 }
