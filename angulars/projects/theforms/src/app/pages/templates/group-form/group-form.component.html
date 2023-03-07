@@ -1,3 +1,52 @@
-<!-- Form -->
+<div class="row">
+  <!-- Form -->
+  <div class="col-4">
 
-<!-- Output Value -->
+    <widget-card title="Form">
+
+      <form #form="ngForm" (ngSubmit)="addNew(form.value); form.reset()">
+        <widget-form-item label="Name">
+          <input type="text" class="form-control"
+            ngModel name="name" placeholder="Enter Name">
+        </widget-form-item>
+
+        <fieldset ngModelGroup="contact">
+          <widget-form-item label="Phone">
+            <input type="tel" class="form-control"
+              ngModel name="phone" placeholder="Enter Phone">
+          </widget-form-item>
+
+          <widget-form-item label="Email">
+            <input type="email" class="form-control"
+              ngModel name="email" placeholder="Enter Email">
+          </widget-form-item>
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary">Add New</button>
+      </form>
+    </widget-card>
+
+  </div>
+  <!-- Output Value -->
+  <div class="col">
+    <widget-card title="Output Value">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of list">
+            <td>{{item.name}}</td>
+            <td>{{item.contact.phone}}</td>
+            <td>{{item.contact.email}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </widget-card>
+  </div>
+</div>
+

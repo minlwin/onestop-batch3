@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class GroupFormComponent {
 
+  list:any[] = []
+
+  addNew(item:any) {
+    this.list.push(item)
+  }
 }
