@@ -1,0 +1,14 @@
+<widget-card title="Form Template" bottom="1rem">
+
+  <form #demoForm="ngForm">
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" ngModel name="name" placeholder="Enter Name" class="form-control">
+    </div>
+  </form>
+
+</widget-card>
+
+<widget-card title="Output Value">
+  <pre>{{demoForm.value | json}}</pre>
+</widget-card>
