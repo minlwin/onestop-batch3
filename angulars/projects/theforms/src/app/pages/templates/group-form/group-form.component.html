@@ -5,30 +5,39 @@
     <widget-card title="Form">
 
       <form #form="ngForm" (ngSubmit)="addNew(form.value); form.reset()">
+
         <widget-form-item label="Name">
           <input type="text" class="form-control"
-            ngModel name="name" placeholder="Enter Name">
+            ngModel name="name" #nameInput="ngModel" required placeholder="Enter Name">
+          <widget-single-error [control]="nameInput" message="Please Enter Name" />
         </widget-form-item>
 
         <fieldset ngModelGroup="contact">
           <widget-form-item label="Phone">
             <input type="tel" class="form-control"
-              ngModel name="phone" placeholder="Enter Phone">
+              ngModel name="phone" #phoneInput="ngModel" required placeholder="Enter Phone">
+            <widget-single-error [control]="phoneInput" message="Please Enter Phone" />
           </widget-form-item>
 
           <widget-form-item label="Email">
             <input type="email" class="form-control"
-              ngModel name="email" placeholder="Enter Email">
+              ngModel name="email" #emailInput="ngModel" required email placeholder="Enter Email">
+            <widget-multi-error [control]="emailInput" [message]="emailValidationError"></widget-multi-error>
           </widget-form-item>
         </fieldset>
 
-        <button type="submit" class="btn btn-primary">Add New</button>
+        <button [disabled]="!form.valid" type="submit" class="btn btn-primary">Add New</button>
       </form>
     </widget-card>
 
   </div>
   <!-- Output Value -->
   <div class="col">
+
+    <widget-card title="Form Status" bottom="1rem">
+      <pre>{{emailInput.errors | json}}</pre>
+    </widget-card>
+
     <widget-card title="Output Value">
       <table class="table table-striped">
         <thead>

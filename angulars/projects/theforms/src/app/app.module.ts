@@ -11,6 +11,8 @@ import { GroupFormComponent } from './pages/templates/group-form/group-form.comp
 import { TemplateDataBindComponent } from './pages/templates/template-data-bind/template-data-bind.component';
 import { CardComponent } from './widgets/card/card.component';
 import { FormItemComponent } from './widgets/form-item/form-item.component';
+import { SingleErrorComponent } from './widgets/single-error/single-error.component';
+import { MultiErrorComponent } from './widgets/multi-error/multi-error.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { FormItemComponent } from './widgets/form-item/form-item.component';
     GroupFormComponent,
     TemplateDataBindComponent,
     CardComponent,
-    FormItemComponent
+    FormItemComponent,
+    SingleErrorComponent,
+    MultiErrorComponent
   ],
   imports: [
     BrowserModule,

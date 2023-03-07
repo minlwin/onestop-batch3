@@ -1,0 +1,4 @@
+<div *ngIf="(control?.dirty || control?.touched) && control?.invalid"
+  [style.color]="textColor || 'red'">
+  {{ errorMessage }}
+</div>
