@@ -1,1 +1,30 @@
-<p>categories works!</p>
+<div class="d-flex justify-content-between">
+  <h3><i class="bi bi-tags"></i> Category Management</h3>
+  <a (click)="addNew()" class="btn btn-outline-primary">
+    <i class="bi bi-plus-lg me-1"></i> Add New
+  </a>
+</div>
+
+<div class="row row-cols-3 g-3 mt-3">
+  <div class="col" *ngFor="let item of list">
+    <div class="card shadow">
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <h5 class="card-title">{{item.name}}</h5>
+          <a href="#" class="btn btn-sm btn-link">
+            <i class="bi bi-pencil"></i>
+          </a>
+        </div>
+        <span>{{item.burmese}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="categoryEditModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">Edit Category</div>
+    </div>
+  </div>
+</div>
