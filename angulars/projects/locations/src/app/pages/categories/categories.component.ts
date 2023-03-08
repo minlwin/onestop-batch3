@@ -11,8 +11,6 @@ export class CategoriesComponent implements OnInit {
 
   list:any[] = []
 
-  private modal:any
-
   targetData:any
 
   @ViewChild(ModalDialogComponent)
