@@ -8,13 +8,23 @@ import { AppComponent } from './app.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { DivisionsComponent } from './pages/divisions/divisions.component';
 import { TownshipsComponent } from './pages/townships/townships.component';
+import { ModalDialogComponent } from './widgets/modal-dialog/modal-dialog.component';
+import { CategoryEditComponent } from './pages/categories/category-edit/category-edit.component';
+import { FormItemComponent } from './widgets/form-item/form-item.component';
+import { NoDataComponent } from './widgets/no-data/no-data.component';
+import { FormItemErrorComponent } from './widgets/form-item-error/form-item-error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriesComponent,
     DivisionsComponent,
-    TownshipsComponent
+    TownshipsComponent,
+    ModalDialogComponent,
+    CategoryEditComponent,
+    FormItemComponent,
+    NoDataComponent,
+    FormItemErrorComponent
   ],
   imports: [
     BrowserModule,

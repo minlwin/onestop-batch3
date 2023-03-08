@@ -11,7 +11,7 @@
       <div class="card-body">
         <div class="d-flex justify-content-between">
           <h5 class="card-title">{{item.name}}</h5>
-          <a href="#" class="btn btn-sm btn-link">
+          <a (click)="edit(item)" class="btn btn-sm btn-link">
             <i class="bi bi-pencil"></i>
           </a>
         </div>
@@ -21,10 +21,8 @@
   </div>
 </div>
 
-<div id="categoryEditModal" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">Edit Category</div>
-    </div>
-  </div>
-</div>
+<widget-no-data *ngIf="list.length == 0" name="Category"></widget-no-data>
+
+<widget-modal-dialog modalId="categoryEdit" title="Edit Category">
+  <app-category-edit [formData]="targetData" (saveListener)="save($event)" />
+</widget-modal-dialog>

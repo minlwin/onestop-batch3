@@ -1,0 +1,17 @@
+<form #form="ngForm" (ngSubmit)="save()">
+
+  <widget-form-item label="Name">
+    <input type="text" #name="ngModel" [(ngModel)]="formData.name" name="name" placeholder="Enter Name" required class="form-control">
+    <widget-form-item-error [control]="name" message="Please Enter Category Name." />
+  </widget-form-item>
+
+  <widget-form-item label="Burmese Name">
+    <input type="text" #burmese="ngModel" [(ngModel)]="formData.burmese" name="burmese" placeholder="Enter Burmese Name" required class="form-control">
+    <widget-form-item-error [control]="burmese" message="Please Enter Burmese Name." />
+  </widget-form-item>
+
+  <button [disabled]="form.invalid" type="submit" class="btn btn-outline-danger">
+    <i class="bi bi-save me-2"></i> Save
+  </button>
+
+</form>

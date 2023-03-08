@@ -1,34 +1,58 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoryService } from '../../apis/category.service';
-
-declare const bootstrap:any
+import { ModalDialogComponent } from '../../widgets/modal-dialog/modal-dialog.component';
 
 @Component({
   templateUrl: './categories.component.html',
   styles: [
   ]
 })
-export class CategoriesComponent implements OnInit, AfterViewInit{
+export class CategoriesComponent implements OnInit {
 
   list:any[] = []
 
   private modal:any
 
+  targetData:any
+
+  @ViewChild(ModalDialogComponent)
+  private dialog?:ModalDialogComponent
+
   constructor(private service:CategoryService) {}
 
   ngOnInit(): void {
-    this.service.search().subscribe(result => this.list = result)
-  }
-
-  ngAfterViewInit(): void {
-    this.modal = new bootstrap.Modal('#categoryEditModal', {})
+    this.initFormData()
+    this.search()
   }
 
   addNew() {
-    this.modal.show()
+    this.initFormData()
+    this.dialog?.show()
   }
 
   edit(data:any) {
+    const {...form} = data
+    this.targetData = form
+    this.dialog?.show()
+  }
 
+  save(form:any) {
+    this.service.save(form).subscribe(_ => {
+      this.initFormData()
+      this.search()
+      this.dialog?.hide()
+    })
+  }
+
+  private search() {
+    this.service.search().subscribe(result => this.list = result)
+  }
+
+  private initFormData() {
+    this.targetData = {
+      id: 0,
+      name: '',
+      burmese: ''
+    }
   }
 }
