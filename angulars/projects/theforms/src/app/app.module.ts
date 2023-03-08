@@ -13,6 +13,7 @@ import { CardComponent } from './widgets/card/card.component';
 import { FormItemComponent } from './widgets/form-item/form-item.component';
 import { SingleErrorComponent } from './widgets/single-error/single-error.component';
 import { MultiErrorComponent } from './widgets/multi-error/multi-error.component';
+import { PhoneValidatorDirective } from './validators/phone-validator.directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MultiErrorComponent } from './widgets/multi-error/multi-error.component
     CardComponent,
     FormItemComponent,
     SingleErrorComponent,
-    MultiErrorComponent
+    MultiErrorComponent,
+    PhoneValidatorDirective
   ],
   imports: [
     BrowserModule,

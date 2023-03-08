@@ -1,1 +1,55 @@
-<p>template-data-bind works!</p>
+<div class="row">
+  <div class="col-4">
+
+    <widget-card title="Input Form">
+      <form #form="ngForm" (ngSubmit)="addNew()">
+
+        <widget-form-item label="Name">
+          <input type="text" placeholder="Enter Name" class="form-control"
+            [(ngModel)]="user.name" #name="ngModel" name="name" required>
+          <widget-single-error [control]="name" message="Please enter name."></widget-single-error>
+        </widget-form-item>
+
+        <fieldset ngModelGroup="contact">
+
+          <widget-form-item label="Phone">
+            <input type="tel" name="phone" class="form-control"
+              [(ngModel)]="user.contact.phone" #phone="ngModel" placeholder="Enter Phone" required phone>
+              <widget-multi-error [control]="phone" [message]="phoneValidationError" ></widget-multi-error>
+          </widget-form-item>
+
+          <widget-form-item label="Email">
+            <input type="email" name="email" class="form-control"
+              [(ngModel)]="user.contact.email" #email="ngModel" placeholder="Enter Email" required email>
+            <widget-multi-error [control]="email" [message]="emailValidationError"></widget-multi-error>
+          </widget-form-item>
+
+        </fieldset>
+
+        <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Add New</button>
+      </form>
+    </widget-card>
+
+
+  </div>
+
+  <div class="col">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of list">
+          <td>{{item.name}}</td>
+          <td>{{item.contact.phone}}</td>
+          <td>{{item.contact.email}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

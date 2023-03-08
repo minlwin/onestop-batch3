@@ -15,6 +15,11 @@ export class GroupFormComponent {
     email: 'Please enter valid email',
   }
 
+  phoneValidationError:Messages = {
+    required : 'Please enter phone number',
+    phone: 'Please enter valid phone number'
+  }
+
   addNew(item:any) {
     this.list.push(item)
   }

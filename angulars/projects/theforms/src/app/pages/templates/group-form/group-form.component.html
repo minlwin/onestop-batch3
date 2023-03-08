@@ -15,9 +15,9 @@
         <fieldset ngModelGroup="contact">
           <widget-form-item label="Phone">
             <input type="tel" class="form-control"
-              ngModel name="phone" #phoneInput="ngModel" required placeholder="Enter Phone">
-            <widget-single-error [control]="phoneInput" message="Please Enter Phone" />
-          </widget-form-item>
+              ngModel name="phone" #phoneInput="ngModel" required phone placeholder="Enter Phone">
+              <widget-multi-error [control]="phoneInput" [message]="phoneValidationError"></widget-multi-error>
+            </widget-form-item>
 
           <widget-form-item label="Email">
             <input type="email" class="form-control"
@@ -35,7 +35,7 @@
   <div class="col">
 
     <widget-card title="Form Status" bottom="1rem">
-      <pre>{{emailInput.errors | json}}</pre>
+      <pre>{{phoneInput.errors | json}}</pre>
     </widget-card>
 
     <widget-card title="Output Value">
