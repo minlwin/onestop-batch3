@@ -12,6 +12,8 @@ export class DivisionsComponent implements OnInit{
   categories:any[] = []
   list:any[] = []
 
+  targetData:any
+
   constructor(
     private categoryService:CategoryService,
     private divisionService:DivisionService) {}
@@ -37,6 +39,10 @@ export class DivisionsComponent implements OnInit{
   }
 
   save() {
+
+  }
+
+  private initFormData() {
 
   }
 }

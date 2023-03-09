@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jdc.location.api.form.TownshipForm;
 import com.jdc.location.entity.Township;
 import com.jdc.location.service.TownshipService;
 
@@ -39,12 +40,12 @@ public class TownshipApi {
 	}
 	
 	@PostMapping
-	Township create(@RequestBody @Valid Township data, BindingResult result) {
+	Township create(@RequestBody @Valid TownshipForm data, BindingResult result) {
 		return service.create(data);
 	}
 	
 	@PutMapping
-	Township update(@PathVariable int id, @RequestBody @Valid Township data, BindingResult result) {
+	Township update(@PathVariable int id, @RequestBody @Valid TownshipForm data, BindingResult result) {
 		return service.update(id, data);
 	}
 	

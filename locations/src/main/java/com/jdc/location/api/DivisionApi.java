@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jdc.location.api.form.DivisionForm;
 import com.jdc.location.entity.Division;
 import com.jdc.location.service.DivisionService;
 
@@ -39,12 +40,12 @@ public class DivisionApi {
 	}
 	
 	@PostMapping
-	Division create(@RequestBody @Valid Division data, BindingResult result) {
+	Division create(@RequestBody @Valid DivisionForm data, BindingResult result) {
 		return service.create(data);
 	}
 	
 	@PutMapping("{id}")
-	Division update(@PathVariable int id, @RequestBody @Valid Division data, BindingResult result) {
+	Division update(@PathVariable int id, @RequestBody @Valid DivisionForm data, BindingResult result) {
 		return service.update(id, data);
 	}
 }

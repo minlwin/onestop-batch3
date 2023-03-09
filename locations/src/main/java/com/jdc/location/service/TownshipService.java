@@ -8,9 +8,13 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jdc.location.api.form.TownshipForm;
 import com.jdc.location.api.utils.DataNotFoundException;
 import com.jdc.location.entity.Township;
+import com.jdc.location.repo.DivisionRepo;
 import com.jdc.location.repo.TownshipRepo;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 @Transactional(readOnly = true)
@@ -18,21 +22,22 @@ public class TownshipService {
 	
 	@Autowired
 	private TownshipRepo repo;
+	@Autowired
+	private DivisionRepo divRepo;
 
 	public Township findById(int id) {
 		return repo.findById(id).orElseThrow(() -> new DataNotFoundException("There is no data with id %d.".formatted(id)));
 	}
 
 	@Transactional
-	public Township create(Township data) {
-		return repo.save(data);
+	public Township create(TownshipForm data) {
+		return repo.save(entity(data));
 	}
 
 	@Transactional
-	public Township update(int id, Township data) {
-		var entity = findById(id);
-		entity.setName(data.getName());
-		entity.setBurmese(data.getBurmese());
+	public Township update(int id, TownshipForm data) {
+		var entity = entity(data);
+		entity.setId(id);
 		return repo.save(entity);
 	}
 
@@ -55,5 +60,12 @@ public class TownshipService {
 			);
 	}
 	
+	private Township entity(TownshipForm data) {
+		var entity = new Township();
+		entity.setName(data.name());
+		entity.setBurmese(data.burmese());
+		entity.setDivision(divRepo.findById(data.division()).orElseThrow(EntityNotFoundException::new));
+		return entity;
+	}
 
 }

@@ -13,6 +13,7 @@ import { CategoryEditComponent } from './pages/categories/category-edit/category
 import { FormItemComponent } from './widgets/form-item/form-item.component';
 import { NoDataComponent } from './widgets/no-data/no-data.component';
 import { FormItemErrorComponent } from './widgets/form-item-error/form-item-error.component';
+import { DivisionEditComponent } from './pages/divisions/division-edit/division-edit.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormItemErrorComponent } from './widgets/form-item-error/form-item-erro
     CategoryEditComponent,
     FormItemComponent,
     NoDataComponent,
-    FormItemErrorComponent
+    FormItemErrorComponent,
+    DivisionEditComponent
   ],
   imports: [
     BrowserModule,

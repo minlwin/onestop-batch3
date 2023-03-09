@@ -9,9 +9,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import com.jdc.location.api.form.DivisionForm;
 import com.jdc.location.api.utils.DataNotFoundException;
 import com.jdc.location.entity.Division;
 import com.jdc.location.repo.DivisionRepo;
+import com.jdc.location.repo.DivisionTypeRepo;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 @Transactional(readOnly = true)
@@ -19,22 +23,25 @@ public class DivisionService {
 	
 	@Autowired
 	private DivisionRepo repo;
+	@Autowired
+	private DivisionTypeRepo typeRepo;
 
 	public Division findById(int id) {
 		return repo.findById(id).orElseThrow(() -> new DataNotFoundException("There is no data with id %d.".formatted(id)));
 	}
 
 	@Transactional
-	public Division create(Division data) {
-		return repo.save(data);
+	public Division create(DivisionForm data) {
+		return repo.save(data.entity(id -> typeRepo.findById(id).orElseThrow(EntityNotFoundException::new)));
 	}
 
 	@Transactional
-	public Division update(int id, Division data) {
+	public Division update(int id, DivisionForm data) {
 		var entity = findById(id);
-		entity.setName(data.getName());
-		entity.setBurmese(data.getBurmese());
-		entity.setCapital(data.getCapital());
+		entity.setName(data.name());
+		entity.setBurmese(data.burmese());
+		entity.setCapital(data.capital());
+		entity.setType(typeRepo.findById(data.type()).orElseThrow(EntityNotFoundException::new));
 		return repo.save(entity);
 	}
 
