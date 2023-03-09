@@ -1,1 +1,25 @@
-<p>reactives works!</p>
+<h3>Reactive Form</h3>
+
+<nav class="nav nav-tabs">
+  <li class="nav-item">
+    <a [routerLink]="['construct']" routerLinkActive="active" class="nav-link">Constructing Form</a>
+  </li>
+
+  <li class="nav-item">
+    <a [routerLink]="['validation']" routerLinkActive="active" class="nav-link">Validations</a>
+  </li>
+
+  <li class="nav-item">
+    <a [routerLink]="['array']" routerLinkActive="active" class="nav-link">Dynamic Form Array</a>
+  </li>
+
+  <li class="nav-item">
+    <a [routerLink]="['group']" routerLinkActive="active" class="nav-link">Dynamic Form Group</a>
+  </li>
+
+</nav>
+
+<div class="mt-3">
+  <router-outlet></router-outlet>
+</div>
+
