@@ -3,28 +3,24 @@
     <widget-card title="Reactive Form">
       <form [formGroup]="form">
         <widget-form-item label="Name">
-          <div class="input-group">
+          <widget-input-group [valid]="form.get('name')?.valid">
             <input formControlName="name" type="text" class="form-control" placeholder="Enter Name">
-            <span class="input-group-text">
-              <i class="bi" [class.bi-x]="form.get('name')?.invalid" [class.bi-check]="form.get('name')?.valid"></i>
-            </span>
-          </div>
+          </widget-input-group>
         </widget-form-item>
 
         <div formGroupName="contact" class="row">
           <div class="col">
             <widget-form-item label="Phone">
-              <div class="input-group">
+              <widget-input-group [valid]="form.get('contact.phone')?.valid">
                 <input formControlName="phone" type="tel" placeholder="Enter Phone" class="form-control">
-                <span class="input-group-text">
-                  <i class="bi bi-check"></i>
-                </span>
-              </div>
+              </widget-input-group>
             </widget-form-item>
           </div>
           <div class="col">
             <widget-form-item label="Email">
-              <input formControlName="email" type="email" placeholder="Enter Email" class="form-control">
+              <widget-input-group [valid]="form.get('contact.email')?.valid">
+                <input formControlName="email" type="email" placeholder="Enter Email" class="form-control">
+              </widget-input-group>
             </widget-form-item>
           </div>
         </div>

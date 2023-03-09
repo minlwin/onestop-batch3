@@ -15,9 +15,9 @@ import { SingleErrorComponent } from './widgets/single-error/single-error.compon
 import { MultiErrorComponent } from './widgets/multi-error/multi-error.component';
 import { PhoneValidatorDirective } from './validators/phone-validator.directive';
 import { ConstructingComponent } from './pages/reactives/constructing/constructing.component';
-import { ValidationsComponent } from './pages/reactives/validations/validations.component';
 import { DynamicArrayComponent } from './pages/reactives/dynamic-array/dynamic-array.component';
 import { DynamicGroupComponent } from './pages/reactives/dynamic-group/dynamic-group.component';
+import { InputGroupComponent } from './widgets/input-group/input-group.component';
 
 @NgModule({
   declarations: [
@@ -33,9 +33,9 @@ import { DynamicGroupComponent } from './pages/reactives/dynamic-group/dynamic-g
     MultiErrorComponent,
     PhoneValidatorDirective,
     ConstructingComponent,
-    ValidationsComponent,
     DynamicArrayComponent,
-    DynamicGroupComponent
+    DynamicGroupComponent,
+    InputGroupComponent
   ],
   imports: [
     BrowserModule,
