@@ -1,1 +1,55 @@
-<p>divisions works!</p>
+<!-- Title -->
+<h3>Division Management</h3>
+
+<!-- Search Form -->
+<form class="row" #form="ngForm" (ngSubmit)="search(form.value)">
+  <!-- Category Id (type) -->
+  <div class="col-auto">
+    <widget-form-item label="Category">
+      <select name="type" ngModel class="form-select">
+        <option value="">All Category</option>
+        <option *ngFor="let item of categories" [value]="item.id">{{item.name}}</option>
+      </select>
+    </widget-form-item>
+  </div>
+  <!-- Keyword -->
+  <div class="col-3">
+    <widget-form-item label="Keyword">
+      <input type="text" name="keyword" ngModel placeholder="Search Keyword" class="form-control">
+    </widget-form-item>
+  </div>
+
+  <div class="col hform-buttons">
+    <!-- Search Button -->
+    <button type="submit" class="btn btn-outline-primary me-1">
+      <i class="bi bi-search"></i> Search
+    </button>
+    <!-- Add New Button -->
+    <button type="button" (click)="addNew()" class="btn btn-outline-danger">
+      <i class="bi bi-plus-lg"></i> Add New
+    </button>
+  </div>
+
+</form>
+
+<!-- Result Grid -->
+<widget-no-data *ngIf="list.length == 0" name="Division"></widget-no-data>
+
+<div class="row row-cols-3 g-2">
+  <div *ngFor="let item of list" class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <h5 class="card-title">{{item.name}}</h5>
+          <a (click)="edit(item)" class="btn-link">
+            <i class="bi bi-pencil"></i>
+          </a>
+        </div>
+        <div class="d-flex flex-column">
+          <span>{{item.type.name}}</span>
+          <span>{{item.burmese}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

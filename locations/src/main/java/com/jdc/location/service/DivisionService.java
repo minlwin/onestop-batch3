@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import com.jdc.location.api.utils.DataNotFoundException;
 import com.jdc.location.entity.Division;
@@ -38,7 +39,7 @@ public class DivisionService {
 	}
 
 	public List<Division> search(Optional<Integer> type, Optional<String> keyword) {
-		return repo.findAll(whichType(type).and(whichKeyword(keyword)));
+		return repo.findAll(whichType(type).and(whichKeyword(keyword.filter(StringUtils::hasLength))));
 	}
 	
 	private Specification<Division> whichType(Optional<Integer> data) {
