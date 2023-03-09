@@ -1,1 +1,23 @@
-<p>division-edit works!</p>
+<form>
+
+  <widget-form-item label="Category">
+    <select class="form-select">
+      <option value="">Select One</option>
+      <option *ngFor="let item of categories" [value]="item.id">{{item.name}}</option>
+    </select>
+  </widget-form-item>
+
+  <widget-form-item label="Name">
+    <input type="text" placeholder="Enter Name" class="form-control">
+  </widget-form-item>
+  <widget-form-item label="Burmese">
+    <input type="text" placeholder="Enter Burmese" class="form-control">
+  </widget-form-item>
+  <widget-form-item label="Capital">
+    <input type="text" placeholder="Enter Capital" class="form-control">
+  </widget-form-item>
+
+  <button type="submit" class="btn btn-outline-danger">
+    <i class="bi bi-save me-2"></i> Save
+  </button>
+</form>

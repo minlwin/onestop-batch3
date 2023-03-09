@@ -10,4 +10,11 @@ export class DivisionEditComponent {
 
   @Input()
   formData:any
+
+  @Input()
+  categories:any[] = []
+
+  save() {
+
+  }
 }
