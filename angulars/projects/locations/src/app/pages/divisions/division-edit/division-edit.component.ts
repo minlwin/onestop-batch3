@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-division-edit',
@@ -14,7 +14,14 @@ export class DivisionEditComponent {
   @Input()
   categories:any[] = []
 
-  save() {
+  @Output()
+  saveListener = new EventEmitter
 
+  save() {
+    this.saveListener.emit(this.formData)
+  }
+
+  setType(value:any) {
+    this.formData.type = value
   }
 }

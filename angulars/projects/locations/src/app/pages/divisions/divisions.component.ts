@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { CategoryService } from '../../apis/category.service';
 import { DivisionService } from '../../apis/division.service';
 import { ModalDialogComponent } from '../../widgets/modal-dialog/modal-dialog.component';
@@ -24,8 +24,10 @@ export class DivisionsComponent implements OnInit{
     private divisionService:DivisionService) {}
 
   ngOnInit(): void {
+    this.initFormData()
     this.categoryService.search().subscribe(result => {
       this.categories = result
+      this.search({})
     })
   }
 
@@ -41,13 +43,18 @@ export class DivisionsComponent implements OnInit{
   }
 
   edit(data:any) {
-    const {... formData} = data
+    const {type, ... formData} = data
+    formData.type = type.id
     this.targetData = formData
     this.dialog?.show()
   }
 
-  save() {
-
+  save(data:any) {
+    this.divisionService.save(data).subscribe(_ => {
+      this.search({})
+      this.initFormData()
+      this.dialog?.hide()
+    })
   }
 
   private initFormData() {

@@ -1,23 +1,25 @@
-<form>
+<form #form="ngForm" (ngSubmit)="save()">
 
   <widget-form-item label="Category">
-    <select class="form-select">
+    <select #typeSelect="ngModel" required name="type" [ngModel]="formData.type"
+      (change)="setType(typeSelect.value)" class="form-select">
       <option value="">Select One</option>
-      <option *ngFor="let item of categories" [value]="item.id">{{item.name}}</option>
+      <option *ngFor="let item of categories" [value]="item.id"
+        [selected]="item.id == formData.type" >{{item.name}}</option>
     </select>
   </widget-form-item>
 
   <widget-form-item label="Name">
-    <input type="text" placeholder="Enter Name" class="form-control">
+    <input type="text" [(ngModel)]="formData.name" name="name" required placeholder="Enter Name" class="form-control">
   </widget-form-item>
   <widget-form-item label="Burmese">
-    <input type="text" placeholder="Enter Burmese" class="form-control">
+    <input type="text" [(ngModel)]="formData.burmese" name="burmese" required placeholder="Enter Burmese" class="form-control">
   </widget-form-item>
   <widget-form-item label="Capital">
-    <input type="text" placeholder="Enter Capital" class="form-control">
+    <input type="text" [(ngModel)]="formData.capital" name="capital" required placeholder="Enter Capital" class="form-control">
   </widget-form-item>
 
-  <button type="submit" class="btn btn-outline-danger">
+  <button [disabled]="form.invalid" type="submit" class="btn btn-outline-danger">
     <i class="bi bi-save me-2"></i> Save
   </button>
 </form>

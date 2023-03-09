@@ -35,19 +35,19 @@
 <!-- Result Grid -->
 <widget-no-data *ngIf="list.length == 0" name="Division"></widget-no-data>
 
-<div class="row row-cols-3 g-2">
+<div class="row row-cols-3 g-3">
   <div *ngFor="let item of list" class="col">
-    <div class="card">
+    <div class="card shadow">
       <div class="card-body">
         <div class="d-flex justify-content-between">
-          <h5 class="card-title">{{item.name}}</h5>
+          <h5 class="card-title">{{item.name + ' ' + item.type.name}}</h5>
           <a (click)="edit(item)" class="btn-link">
             <i class="bi bi-pencil"></i>
           </a>
         </div>
-        <div class="d-flex flex-column">
-          <span>{{item.type.name}}</span>
-          <span>{{item.burmese}}</span>
+        <div class="d-flex flex-column text-secondary">
+          <span>{{item.burmese + ' ' + item.type.burmese}}</span>
+          <span>{{item.capital}}</span>
         </div>
       </div>
     </div>
@@ -55,5 +55,5 @@
 </div>
 
 <widget-modal-dialog title="Edit Division" modalId="divisionEdit">
-  <app-division-edit [categories]="categories"  [formData]="targetData"></app-division-edit>
+  <app-division-edit (saveListener)="save($event)" [categories]="categories"  [formData]="targetData"></app-division-edit>
 </widget-modal-dialog>

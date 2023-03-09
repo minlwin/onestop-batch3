@@ -19,7 +19,7 @@ export class DivisionService {
 
   save(form:any) {
     const {id, ... data} = form
-    return id == 0 ? this.http.post<any>(API, data)
-      : this.http.put<any>(`${API}/${id}`, data)
+    return id ? this.http.put<any>(`${API}/${id}`, data)
+      : this.http.post<any>(API, data)
   }
 }
