@@ -23,7 +23,7 @@
 hs_err_pid*
 
 **/target/
-/Users
+**/Users
 **/.settings
 **/.project
 **/.classpath
