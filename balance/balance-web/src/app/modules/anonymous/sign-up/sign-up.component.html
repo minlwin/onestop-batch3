@@ -1,1 +1,26 @@
-<p>sign-up works!</p>
+<form>
+
+  <h4><i class="bi bi-person-add"></i> Member Sign Up</h4>
+
+  <widget-form-item label="Name">
+    <input type="text" placeholder="Enter Member Name" class="form-control">
+  </widget-form-item>
+
+  <widget-form-item label="Login Id">
+    <input type="text" placeholder="Enter Login Id" class="form-control">
+  </widget-form-item>
+
+  <widget-form-item label="Password">
+    <input type="password" placeholder="Enter Password" class="form-control">
+  </widget-form-item>
+
+  <div>
+    <a [routerLink]="['../sign-in']" class="btn btn-outline-primary me-2">
+      <i class="bi bi-person-check"></i> Sign In
+    </a>
+
+    <button class="btn btn-outline-danger">
+      <i class="bi bi-unlock"></i> Sign Up
+    </button>
+  </div>
+</form>

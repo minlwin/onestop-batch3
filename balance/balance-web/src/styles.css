@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+.anonymous-home {
+  background-image: url('/assets/background.png');
+  background-repeat: no-repeat;
+  background-size: 20%;
+  background-position: center left 130px;
+}
