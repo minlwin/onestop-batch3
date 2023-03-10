@@ -1,28 +1,21 @@
-<div class="d-flex justify-content-between">
-  <h3><i class="bi bi-tags"></i> Category Management</h3>
-  <a (click)="addNew()" class="btn btn-outline-primary">
-    <i class="bi bi-plus-lg me-1"></i> Add New
-  </a>
-</div>
+<widget-top-page title="Category Management" icon="bi-tags">
 
-<div class="row row-cols-3 g-3 mt-2">
-  <div class="col" *ngFor="let item of list">
-    <div class="card shadow">
-      <div class="card-body">
-        <div class="d-flex justify-content-between">
-          <h5 class="card-title">{{item.name}}</h5>
-          <a (click)="edit(item)" class="btn-link">
-            <i class="bi bi-pencil"></i>
-          </a>
-        </div>
-        <span>{{item.burmese}}</span>
-      </div>
+  <div actions>
+    <a (click)="addNew()" class="btn btn-outline-primary">
+      <i class="bi bi-plus-lg me-1"></i> Add New
+    </a>
+  </div>
+
+  <div class="row row-cols-3 g-3 mt-2">
+    <div class="col" *ngFor="let item of list">
+      <app-category-item [item]="item" (onEdit)="edit(item)"></app-category-item>
     </div>
   </div>
-</div>
 
-<widget-no-data *ngIf="list.length == 0" name="Category"></widget-no-data>
+  <widget-no-data *ngIf="list.length == 0" name="Category"></widget-no-data>
 
-<widget-modal-dialog modalId="categoryEdit" title="Edit Category">
-  <app-category-edit [formData]="targetData" (saveListener)="save($event)" />
-</widget-modal-dialog>
+  <widget-modal-dialog modalId="categoryEdit" title="Edit Category">
+    <app-category-edit [formData]="targetData" (saveListener)="save($event)" />
+  </widget-modal-dialog>
+
+</widget-top-page>

@@ -14,6 +14,11 @@ import { FormItemComponent } from './widgets/form-item/form-item.component';
 import { NoDataComponent } from './widgets/no-data/no-data.component';
 import { FormItemErrorComponent } from './widgets/form-item-error/form-item-error.component';
 import { DivisionEditComponent } from './pages/divisions/division-edit/division-edit.component';
+import { TopPageComponent } from './widgets/top-page/top-page.component';
+import { TownshipSearchComponent } from './pages/townships/township-search/township-search.component';
+import { DivisionItemComponent } from './pages/divisions/division-item/division-item.component';
+import { CategoryItemComponent } from './pages/categories/category-item/category-item.component';
+import { DivisionSearchComponent } from './pages/divisions/division-search/division-search.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,12 @@ import { DivisionEditComponent } from './pages/divisions/division-edit/division-
     FormItemComponent,
     NoDataComponent,
     FormItemErrorComponent,
-    DivisionEditComponent
+    DivisionEditComponent,
+    TopPageComponent,
+    TownshipSearchComponent,
+    DivisionItemComponent,
+    CategoryItemComponent,
+    DivisionSearchComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,33 @@
+<div class="card shadow mb-4">
+  <div class="card-body">
+    <form class="row" #form="ngForm" (ngSubmit)="onSearch.emit(form.value)">
+      <!-- Category Id (type) -->
+      <div class="col-auto">
+        <widget-form-item label="Category">
+          <select name="type" ngModel class="form-select">
+            <option value="">All Category</option>
+            <option *ngFor="let item of categories" [value]="item.id">{{item.name}}</option>
+          </select>
+        </widget-form-item>
+      </div>
+      <!-- Keyword -->
+      <div class="col-3">
+        <widget-form-item label="Keyword">
+          <input type="text" name="keyword" ngModel placeholder="Search Keyword" class="form-control">
+        </widget-form-item>
+      </div>
+
+      <div class="col hform-buttons">
+        <!-- Search Button -->
+        <button type="submit" class="btn btn-outline-primary me-1">
+          <i class="bi bi-search"></i> Search
+        </button>
+        <!-- Add New Button -->
+        <button type="button" (click)="onAdd.emit()" class="btn btn-outline-danger">
+          <i class="bi bi-plus-lg"></i> Add New
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

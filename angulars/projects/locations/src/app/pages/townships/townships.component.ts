@@ -7,4 +7,21 @@ import { Component } from '@angular/core';
 })
 export class TownshipsComponent {
 
+  list:any[] = []
+
+  search(form:any) {
+
+  }
+
+  addNew() {
+
+  }
+
+  edit(data:any) {
+
+  }
+
+  save(data:any) {
+
+  }
 }

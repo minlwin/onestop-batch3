@@ -1,0 +1,16 @@
+<div class="card shadow">
+  <div class="card-body row">
+    <div class="col-auto">
+      <i class="bi bi-tag"></i>
+    </div>
+    <div class="col">
+      <div class="d-flex justify-content-between">
+        <h5 class="card-title">{{item.name}}</h5>
+        <a (click)="onEdit.emit(item)" class="btn-link">
+          <i class="bi bi-pencil"></i>
+        </a>
+      </div>
+      <span>{{item.burmese}}</span>
+    </div>
+  </div>
+</div>
