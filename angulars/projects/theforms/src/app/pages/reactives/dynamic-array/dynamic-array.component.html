@@ -1,1 +1,33 @@
-<p>dynamic-array works!</p>
+<div class="row">
+  <div class="col">
+    <widget-card title="Form Input">
+      <form [formGroup]="form">
+        <widget-input-group label="Name" [valid]="form.get('name')?.valid">
+          <input type="text" formControlName="name" placeholder="Enter Name" class="form-control">
+        </widget-input-group>
+
+        <widget-form-item label="Subjects" formArrayName="subjects">
+          <div [class.mt-2]="i > 0" class="input-group" *ngFor="let item of subjects.controls; index as i">
+            <button (click)="removeSubject(i)" [disabled]="item.invalid" class="btn btn-outline-danger input-group-text">
+              <i class="bi bi-trash"></i>
+            </button>
+            <input type="text" [formControlName]="i" class="form-control" placeholder="Enter Subject">
+            <span class="input-group-text">
+              <i class="bi" [class.bi-x]="item.invalid" [class.bi-check]="item.valid"></i>
+            </span>
+          </div>
+        </widget-form-item>
+
+        <button [disabled]="subjects.invalid" (click)="addSubject()" class="btn btn-primary">
+          <i class="bi bi-plus-lg me-2"></i> Add Subject
+        </button>
+      </form>
+    </widget-card>
+  </div>
+
+  <div class="col-4">
+    <widget-card title="Form Result">
+      <pre>{{form.value | json}}</pre>
+    </widget-card>
+  </div>
+</div>

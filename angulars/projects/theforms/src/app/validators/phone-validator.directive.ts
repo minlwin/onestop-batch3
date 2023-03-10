@@ -1,5 +1,6 @@
 import { Directive } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@angular/forms';
+import { PHONE_PATTERN } from './app-validators';
 
 @Directive({
   selector: '[phone]',
@@ -9,7 +10,7 @@ import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@an
 })
 export class PhoneValidatorDirective implements Validator{
 
-  private pattern = new RegExp('^09\\d([-\\s](\\d){4}){2}$')
+  private pattern = new RegExp(PHONE_PATTERN)
 
   constructor() { }
 

@@ -10,4 +10,7 @@ export class InputGroupComponent {
 
   @Input()
   valid?:boolean
+
+  @Input()
+  label?:string
 }

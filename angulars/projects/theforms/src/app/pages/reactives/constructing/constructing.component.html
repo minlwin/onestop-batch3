@@ -2,27 +2,21 @@
   <div class="col">
     <widget-card title="Reactive Form">
       <form [formGroup]="form">
-        <widget-form-item label="Name">
-          <widget-input-group [valid]="form.get('name')?.valid">
-            <input formControlName="name" type="text" class="form-control" placeholder="Enter Name">
-          </widget-input-group>
-        </widget-form-item>
+        <widget-input-group label="Name" [valid]="form.get('name')?.valid">
+          <input formControlName="name" type="text" class="form-control" placeholder="Enter Name">
+        </widget-input-group>
 
         <div formGroupName="contact" class="row">
           <div class="col">
-            <widget-form-item label="Phone">
-              <widget-input-group [valid]="form.get('contact.phone')?.valid">
-                <input formControlName="phone" type="tel" placeholder="Enter Phone" class="form-control">
-              </widget-input-group>
-            </widget-form-item>
-          </div>
+            <widget-input-group label="Phone" [valid]="form.get('contact.phone')?.valid">
+              <input formControlName="phone" type="tel" placeholder="09X-XXXX-XXXX" class="form-control">
+            </widget-input-group>
+        </div>
           <div class="col">
-            <widget-form-item label="Email">
-              <widget-input-group [valid]="form.get('contact.email')?.valid">
-                <input formControlName="email" type="email" placeholder="Enter Email" class="form-control">
-              </widget-input-group>
-            </widget-form-item>
-          </div>
+            <widget-input-group label="Email" [valid]="form.get('contact.email')?.valid">
+              <input formControlName="email" type="email" placeholder="Enter Email" class="form-control">
+            </widget-input-group>
+        </div>
         </div>
 
         <widget-form-item formArrayName="subject" label="Subjects">

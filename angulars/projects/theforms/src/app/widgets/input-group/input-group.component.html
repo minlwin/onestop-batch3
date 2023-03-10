@@ -1,7 +1,9 @@
-<div class="input-group">
-  <ng-content></ng-content>
-  <span class="input-group-text">
-    <i class="bi" [class.bi-x]="!valid" [class.bi-check]="valid"></i>
-  </span>
-</div>
+<widget-form-item [label]="label">
+  <div class="input-group">
+    <ng-content></ng-content>
+    <span class="input-group-text">
+      <i class="bi" [class.bi-x]="!valid" [class.bi-check]="valid"></i>
+    </span>
+  </div>
+</widget-form-item>
 
