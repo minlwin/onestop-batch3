@@ -1,4 +1,4 @@
-<div class="mb-3">
-  <label class="form-label">{{label || 'Form Label'}}</label>
+<div [class.mb-3]="!noMergin">
+  <label *ngIf="label" class="form-label">{{label || 'Form Label'}}</label>
   <ng-content></ng-content>
 </div>

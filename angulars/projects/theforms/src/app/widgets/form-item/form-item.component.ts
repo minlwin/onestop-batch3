@@ -9,4 +9,7 @@ import { Component, Input } from '@angular/core';
 export class FormItemComponent {
   @Input()
   label?:string
+
+  @Input()
+  noMergin:boolean = false
 }

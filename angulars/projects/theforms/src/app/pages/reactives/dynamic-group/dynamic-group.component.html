@@ -1,1 +1,42 @@
-<p>dynamic-group works!</p>
+<div class="row">
+  <div class="col">
+    <widget-card title="Form Input">
+      <form [formGroup]="form">
+        <widget-input-group label="Name" [valid]="form.get('name')?.valid">
+          <input formControlName="name" type="text" class="form-control" placeholder="Enter Name">
+        </widget-input-group>
+
+        <widget-form-item [noMergin]="true" label="Properties" formArrayName="props">
+          <div class="row" *ngFor="let item of props.controls; index as i" [formGroupName]="i" >
+            <div class="col">
+              <div class="input-group">
+                <button (click)="removeProps(i)" [disabled]="item.invalid" class="btn btn-outline-danger input-group-text">
+                  <i class="bi bi-trash"></i>
+                </button>
+                <input formControlName="name" type="text" placeholder="Enter Name" class="form-control">
+                <span class="input-group-text">
+                  <i class="bi" [class.bi-x]="item.get('name')?.invalid" [class.bi-check]="item.get('name')?.valid"></i>
+                </span>
+              </div>
+            </div>
+            <div class="col">
+              <widget-input-group [valid]="item.get('value')?.valid">
+                <input formControlName="value" type="text" placeholder="Enter Value" class="form-control">
+              </widget-input-group>
+            </div>
+          </div>
+        </widget-form-item>
+
+        <button (click)="addProps()" [disabled]="props.invalid" class="btn btn-outline-primary">
+          <i class="bi bi-plus-lg me-2"></i> Add Properties
+        </button>
+      </form>
+    </widget-card>
+  </div>
+
+  <div class="col-4">
+    <widget-card title="Form Result">
+      <pre>{{form.value | json}}</pre>
+    </widget-card>
+  </div>
+</div>
