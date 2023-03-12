@@ -14,7 +14,7 @@
 
   <widget-no-data *ngIf="list.length == 0" name="Category"></widget-no-data>
 
-  <widget-modal-dialog modalId="categoryEdit" title="Edit Category">
+  <widget-modal-dialog modalId="categoryEdit" [title]="targetData?.id ? 'Edit Category' : 'Add New Category'">
     <app-category-edit [formData]="targetData" (saveListener)="save($event)" />
   </widget-modal-dialog>
 

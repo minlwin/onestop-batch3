@@ -1,14 +1,23 @@
 <widget-top-page title="Townships Management" icon="bi-pin">
 
   <!-- Search Form -->
-  <app-township-search></app-township-search>
+  <app-township-search [categories]="categories"
+    (onAdd)="addNew()" (onSearch)="search($event)" />
 
   <!-- No Data -->
   <widget-no-data *ngIf="list.length == 0" name="Division" />
 
- <!-- Result Data -->
+  <!-- Result Data -->
+  <div class="row row-cols-3 g-3">
+    <div *ngFor="let item of list" class="col">
+      <app-township-item [item]="item" (onEdit)="edit($event)" />
+    </div>
+  </div>
 
- <!-- Edit Dialog -->
+  <!-- Edit Dialog -->
+  <widget-modal-dialog title="Edit Township" modalId="townshipEdit">
+    <app-township-edit [categories]="categories" (saveListener)="save($event)"></app-township-edit>
+  </widget-modal-dialog>
 
 
 </widget-top-page>

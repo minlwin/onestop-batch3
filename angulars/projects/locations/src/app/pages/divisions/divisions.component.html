@@ -14,7 +14,7 @@
   </div>
 
   <!-- Edit Dialog -->
-  <widget-modal-dialog title="Edit Division" modalId="divisionEdit">
+  <widget-modal-dialog [title]="targetData?.id ? 'Edit Division' : 'Add New Division'" modalId="divisionEdit">
     <app-division-edit (saveListener)="save($event)" [categories]="categories"  [formData]="targetData" />
   </widget-modal-dialog>
 

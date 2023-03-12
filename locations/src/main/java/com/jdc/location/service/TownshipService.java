@@ -41,10 +41,16 @@ public class TownshipService {
 		return repo.save(entity);
 	}
 
-	public List<Township> search(Optional<Integer> division, Optional<String> keyword) {
-		return repo.findAll(whichDivision(division).and(whichKeyword(keyword)));
+	public List<Township> search(Optional<Integer> type, Optional<Integer> division, Optional<String> keyword) {
+		return repo.findAll(whichType(type).and(whichDivision(division).and(whichKeyword(keyword))));
 	}
 	
+	private Specification<Township> whichType(Optional<Integer> data) {
+		// t.division.id = ?
+		return data.isEmpty() ? Specification.where(null) : 
+			(root, query, cb) -> cb.equal(root.get("division").get("type").get("id"), data.get());
+	}
+
 	private Specification<Township> whichDivision(Optional<Integer> data) {
 		// t.division.id = ?
 		return data.isEmpty() ? Specification.where(null) : 

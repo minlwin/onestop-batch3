@@ -4,9 +4,15 @@
   "configurations": [
     {
       "name": "ng serve",
-      "type": "chrome",
+      "type": "firefox",
       "request": "launch",
-      "url": "http://localhost:4200/"
+      "url": "http://localhost:4200/",
+      "pathMappings": [
+        {
+          "url": "webpack:///projects",
+          "path": "${workspaceFolder}/projects"
+        }
+      ]
     },
     {
       "name": "ng test",

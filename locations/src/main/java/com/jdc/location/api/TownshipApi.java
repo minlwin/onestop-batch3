@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,9 +30,10 @@ public class TownshipApi {
 
 	@GetMapping
 	List<Township> search(
+			@RequestParam Optional<Integer> type, 
 			@RequestParam Optional<Integer> division, 
 			@RequestParam Optional<String> keyword) {
-		return service.search(division, keyword);
+		return service.search(type, division, keyword.filter(StringUtils::hasLength));
 	}
 	
 	@GetMapping("{id}")
@@ -44,7 +46,7 @@ public class TownshipApi {
 		return service.create(data);
 	}
 	
-	@PutMapping
+	@PutMapping("{id}")
 	Township update(@PathVariable int id, @RequestBody @Valid TownshipForm data, BindingResult result) {
 		return service.update(id, data);
 	}

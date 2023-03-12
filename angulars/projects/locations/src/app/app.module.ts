@@ -19,6 +19,8 @@ import { TownshipSearchComponent } from './pages/townships/township-search/towns
 import { DivisionItemComponent } from './pages/divisions/division-item/division-item.component';
 import { CategoryItemComponent } from './pages/categories/category-item/category-item.component';
 import { DivisionSearchComponent } from './pages/divisions/division-search/division-search.component';
+import { TownshipEditComponent } from './pages/townships/township-edit/township-edit.component';
+import { TownshipItemComponent } from './pages/townships/township-item/township-item.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { DivisionSearchComponent } from './pages/divisions/division-search/divis
     TownshipSearchComponent,
     DivisionItemComponent,
     CategoryItemComponent,
-    DivisionSearchComponent
+    DivisionSearchComponent,
+    TownshipEditComponent,
+    TownshipItemComponent
   ],
   imports: [
     BrowserModule,

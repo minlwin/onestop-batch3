@@ -1,0 +1,32 @@
+<form #form="ngForm" (ngSubmit)="save()">
+
+  <widget-form-item label="Category">
+    <select #categorySelect="ngModel" required name="category" [ngModel]="formData.category"
+      (change)="changeCategory(categorySelect.value)" class="form-select">
+      <option value="">Select One</option>
+      <option *ngFor="let item of categories" [value]="item.id"
+        [selected]="item.id == formData.category" >{{item.name}}</option>
+    </select>
+  </widget-form-item>
+
+  <widget-form-item label="Division">
+    <select #divisionSelect="ngModel" required name="division" [ngModel]="formData.division"
+      (change)="changeDivision(divisionSelect.value)" class="form-select">
+      <option value="">Select One</option>
+      <option *ngFor="let item of divisions" [value]="item.id"
+        [selected]="item.id == formData.division" >{{item.name}}</option>
+    </select>
+  </widget-form-item>
+
+  <widget-form-item label="Name">
+    <input type="text" [(ngModel)]="formData.name" name="name" required placeholder="Enter Name" class="form-control">
+  </widget-form-item>
+
+  <widget-form-item label="Burmese">
+    <input type="text" [(ngModel)]="formData.burmese" name="burmese" required placeholder="Enter Burmese" class="form-control">
+  </widget-form-item>
+
+  <button [disabled]="form.invalid" type="submit" class="btn btn-outline-danger">
+    <i class="bi bi-save me-2"></i> Save
+  </button>
+</form>
