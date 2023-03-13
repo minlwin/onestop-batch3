@@ -1,0 +1,18 @@
+<div class="modal fade" [id]="modalId">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <ng-content select="[header]"></ng-content>
+      </div>
+
+      <div class="modal-body">
+        <ng-content select="[body]"></ng-content>
+      </div>
+
+      <div class="modal-footer">
+        <ng-content select="[footer]"></ng-content>
+      </div>
+
+    </div>
+  </div>
+</div>

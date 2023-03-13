@@ -1,1 +1,70 @@
-<p>ledgers works!</p>
+<widget-top-page title="Ledger Management" icon="bi-bookmark" [search]="true">
+
+  <form searchBar class="row">
+    <div class="col-3">
+      <label class="form-label">Ledger Type</label>
+      <select class="form-select">
+        <option value="">All Type</option>
+        <option value="Credit">Credit</option>
+        <option value="Debit">Debit</option>
+      </select>
+    </div>
+
+    <div class="col btn-wrapper">
+      <button class="btn btn-outline-primary me-2">
+        <i class="bi bi-search me-2"></i> Search
+      </button>
+
+      <button type="button" (click)="fileInput.click()" class="btn btn-outline-success me-2">
+        <i class="bi bi-cloud-upload me-2"></i> Upload
+      </button>
+
+      <a (click)="addNew()" class="btn btn-outline-danger">
+        <i class="bi bi-plus-lg me-2"></i> Add New
+      </a>
+    </div>
+  </form>
+
+  <div class="row row-cols-3 g-3">
+    <div *ngFor="let item of list" class="col">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <h4>Some Ledger</h4>
+            <a href="#" class="btn-link">
+              <i class="bi bi-pencil"></i>
+            </a>
+          </div>
+          <span class="text-secondary">Debit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <form enctype="multipart/form-data" class="d-none">
+    <input #fileInput (change)="upload(fileInput.files)" type="file" name="uploadFile">
+  </form>
+
+</widget-top-page>
+
+<widget-modal-dialog modalId="ledgerEditDialog">
+  <h5 header>Add New Ledger</h5>
+
+  <form body>
+    <widget-form-item label="Ledger Type">
+      <select class="form-select">
+        <option value="">Select One</option>
+        <option value="Credit">Credit</option>
+        <option value="Debit">Debit</option>
+      </select>
+    </widget-form-item>
+
+    <widget-form-item label="Name">
+      <input type="text" placeholder="Enter Name" class="form-control">
+    </widget-form-item>
+  </form>
+
+  <button footer class="btn btn-outline-danger">
+    <i class="bi bi-save"></i> Save
+  </button>
+</widget-modal-dialog>

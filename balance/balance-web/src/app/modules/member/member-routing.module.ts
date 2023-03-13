@@ -5,18 +5,13 @@ import { BalanceEditComponent } from './balance-edit/balance-edit.component';
 import { BalanceListComponent } from './balance-list/balance-list.component';
 import { BalanceReportComponent } from './balance-report/balance-report.component';
 import { HomeComponent } from './home/home.component';
-import { LedgersEditComponent } from './ledgers-edit/ledgers-edit.component';
 import { LedgersComponent } from './ledgers/ledgers.component';
 import { MemberComponent } from './member.component';
 
 const routes: Routes = [
   { path: '', component: MemberComponent, children: [
     {path: 'home', component: HomeComponent},
-    {path: 'ledger', children: [
-      {path: 'list', component: LedgersComponent},
-      {path: 'edit', component: LedgersEditComponent},
-      {path: '', redirectTo: 'list', pathMatch: 'full'}
-    ]},
+    {path: 'ledger', component: LedgersComponent},
     {path: 'report', component: BalanceReportComponent},
     {path: 'balance/:type', children: [
       {path: 'list', component: BalanceListComponent},

@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 export class TopPageComponent {
 
   @Input()
-  titlIcon?:string
+  icon?:string
   @Input()
   title?:string
 

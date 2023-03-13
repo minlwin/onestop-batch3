@@ -9,7 +9,6 @@ import { BalanceListComponent } from './balance-list/balance-list.component';
 import { BalanceEditComponent } from './balance-edit/balance-edit.component';
 import { BalanceDetailsComponent } from './balance-details/balance-details.component';
 import { LedgersComponent } from './ledgers/ledgers.component';
-import { LedgersEditComponent } from './ledgers-edit/ledgers-edit.component';
 import { UtilitiesModule } from '../utilities/utilities.module';
 
 
@@ -21,8 +20,7 @@ import { UtilitiesModule } from '../utilities/utilities.module';
     BalanceListComponent,
     BalanceEditComponent,
     BalanceDetailsComponent,
-    LedgersComponent,
-    LedgersEditComponent
+    LedgersComponent
   ],
   imports: [
     CommonModule,
