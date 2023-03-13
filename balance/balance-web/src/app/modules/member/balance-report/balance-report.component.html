@@ -1,0 +1,58 @@
+<widget-top-page title="Balance Report" titlIcon="bi-bar-chart" [search]="true">
+
+  <form searchBar class="row">
+    <div class="col-auto">
+      <label class="form-label">Date From</label>
+      <input type="date" class="form-control">
+    </div>
+    <div class="col-auto">
+      <label class="form-label">Date To</label>
+      <input type="date" class="form-control">
+    </div>
+
+    <div class="btn-wrapper col">
+      <button class="btn btn-outline-primary">
+        <i class="bi bi-search me-2"></i> Search
+      </button>
+    </div>
+  </form>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Issue Date</th>
+        <th>Type</th>
+        <th>Ledger</th>
+        <th class="text-end">Credit</th>
+        <th class="text-end">Debit</th>
+        <th class="text-end">Balance</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          <a [routerLink]="['/member', 'balance', 'credit', 'details']" routerLinkActive="router-link-active"  class="btn-link">2023-03-12</a>
+        </td>
+        <td>Credit</td>
+        <td>Student Fees</td>
+        <td class="text-end">100,000</td>
+        <td class="text-end">0</td>
+        <td class="text-end">100,000</td>
+      </tr>
+
+      <tr>
+        <td>
+          <a [routerLink]="['/member', 'balance', 'debit', 'details']" routerLinkActive="router-link-active"  class="btn-link">2023-03-12</a>
+        </td>
+        <td>Debit</td>
+        <td>Stationary</td>
+        <td class="text-end">0</td>
+        <td class="text-end">35,000</td>
+        <td class="text-end">65,000</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</widget-top-page>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-member',
@@ -8,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class MemberComponent {
 
+  constructor(private router:Router) {}
+
+  signOut() {
+    this.router.navigate(['/'])
+  }
 }

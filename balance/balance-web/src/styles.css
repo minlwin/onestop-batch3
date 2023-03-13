@@ -8,3 +8,7 @@
 .btn-wrapper {
   padding-top: 2rem;
 }
+
+.btn-link {
+  text-decoration: none;
+}

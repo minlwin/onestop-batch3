@@ -1,1 +1,42 @@
-<p>member works!</p>
+<nav class="navbar navbar-expand navbar-dark bg-primary">
+  <div class="container">
+    <a [routerLink]="['/member']" class="navbar-brand"><i class="bi bi-pie-chart"></i> The Balance</a>
+
+    <ul class="navbar-nav">
+
+      <li class="nav-item">
+        <a [routerLink]="['/member', 'report']" routerLinkActive="active" class="nav-link">
+          <i class="bi bi-bar-chart"></i> Balances
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a [routerLink]="['/member', 'balance', 'credit']" routerLinkActive="active" class="nav-link">
+          <i class="bi bi-journal-arrow-up"></i> Credits
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a [routerLink]="['/member', 'balance', 'debit']" routerLinkActive="active" class="nav-link">
+          <i class="bi bi-journal-arrow-down"></i> Debits
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a [routerLink]="['/member', 'ledger']" routerLinkActive="active" class="nav-link">
+          <i class="bi bi-bookmark"></i> Ledgers
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a (click)="signOut()" class="nav-link">
+          <i class="bi bi-lock"></i> Sign Out
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container pt-3">
+  <router-outlet></router-outlet>
+</div>
