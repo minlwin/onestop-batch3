@@ -8,7 +8,6 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UtilitiesModule } from '../utilities/utilities.module';
 
-
 @NgModule({
   declarations: [
     AnonymousComponent,

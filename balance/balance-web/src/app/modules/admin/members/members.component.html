@@ -1,0 +1,56 @@
+<widget-top-page title="Members Management" titlIcon="bi-people" [search]="true">
+
+  <form class="row" searchBar>
+    <div class="col-auto">
+      <label class="form-label">Status</label>
+      <select class="form-select">
+        <option value="">All Status</option>
+        <option value="Apply">Apply</option>
+        <option value="Approved">Approved</option>
+        <option value="Denied">Denied</option>
+      </select>
+    </div>
+
+    <div class="col-4">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" placeholder="Search Name">
+    </div>
+
+    <div class="col btn-wrapper">
+      <button class="btn btn-outline-secondary">
+        <i class="bi bi-search"></i> Search
+      </button>
+    </div>
+  </form>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Login Id</th>
+        <th>Status</th>
+        <th>Registration Date</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Aung Aung</td>
+        <td>aungaung</td>
+        <td>Applied</td>
+        <td>2023-03-10</td>
+        <td>aung@gmail.com</td>
+        <td>091919118181</td>
+        <td>
+          <a [routerLink]="['../', 'member-details']" [queryParams]="{id: 1}" class="btn-link">
+            <i class="bi bi-send"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</widget-top-page>

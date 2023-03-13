@@ -1,0 +1,45 @@
+<widget-top-page title="Member Details" titlIcon="bi-person">
+
+  <div class="w-75">
+    <div class="row mb-3">
+      <div class="col">
+        <label class="form-label">Name</label>
+        <span class="form-control">Aung Aung</span>
+      </div>
+      <div class="col">
+        <label class="form-label">Login Id</label>
+        <span class="form-control">aungaung</span>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col">
+        <label class="form-label">Phone</label>
+        <span class="form-control">09282827272</span>
+      </div>
+      <div class="col">
+        <label class="form-label">Email</label>
+        <span class="form-control">aung@gmail.com</span>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col">
+        <label class="form-label">Registration Date</label>
+        <span class="form-control">2023-03-10</span>
+      </div>
+      <div class="col">
+        <label class="form-label">Status</label>
+        <span class="form-control">Apply</span>
+      </div>
+    </div>
+
+    <div>
+      <button (click)="updateStatus('Approve')" class="btn btn-outline-success me-2">
+        <i class="bi bi-check me-2"></i> Approve
+      </button>
+      <button (click)="updateStatus('Denied')" class="btn btn-outline-danger me-2">
+        <i class="bi bi-x me-2"></i> Denied
+      </button>
+    </div>
+  </div>
+</widget-top-page>

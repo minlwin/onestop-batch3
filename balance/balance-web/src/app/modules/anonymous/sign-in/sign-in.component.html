@@ -1,13 +1,13 @@
-<form>
+<form [formGroup]="form">
 
   <h4><i class="bi bi-person-check"></i> Member Login</h4>
 
-  <widget-form-item label="Login Id">
-    <input type="text" placeholder="Enter Login Id" class="form-control">
+  <widget-form-item label="Login Id" [valid]="form.get('loginId')?.valid">
+    <input formControlName="loginId" type="text" placeholder="Enter Login Id" class="form-control">
   </widget-form-item>
 
-  <widget-form-item label="Password">
-    <input type="password" placeholder="Enter Password" class="form-control">
+  <widget-form-item label="Password" [valid]="form.get('password')?.valid">
+    <input formControlName="password" type="password" placeholder="Enter Password" class="form-control">
   </widget-form-item>
 
   <div>
@@ -15,7 +15,7 @@
       <i class="bi bi-person-add"></i> Sign Up
     </a>
 
-    <button class="btn btn-outline-danger">
+    <button [disabled]="form.invalid" (click)="signIn()" class="btn btn-outline-danger">
       <i class="bi bi-unlock"></i> Sign In
     </button>
   </div>
