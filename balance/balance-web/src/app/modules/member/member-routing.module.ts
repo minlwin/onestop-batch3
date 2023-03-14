@@ -13,7 +13,13 @@ const routes: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'ledger', component: LedgersComponent},
     {path: 'report', component: BalanceReportComponent},
-    {path: 'balance/:type', children: [
+    {path: 'balance/credit', data: {type: 'Credit'}, children: [
+      {path: 'list', component: BalanceListComponent},
+      {path: 'details', component: BalanceDetailsComponent},
+      {path: 'edit', component: BalanceEditComponent},
+      {path: '', redirectTo: 'list', pathMatch: 'full'}
+    ]},
+    {path: 'balance/debit', data : {type: 'Debit'} ,children: [
       {path: 'list', component: BalanceListComponent},
       {path: 'details', component: BalanceDetailsComponent},
       {path: 'edit', component: BalanceEditComponent},

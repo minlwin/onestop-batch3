@@ -10,6 +10,7 @@ import { BalanceEditComponent } from './balance-edit/balance-edit.component';
 import { BalanceDetailsComponent } from './balance-details/balance-details.component';
 import { LedgersComponent } from './ledgers/ledgers.component';
 import { UtilitiesModule } from '../utilities/utilities.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { UtilitiesModule } from '../utilities/utilities.module';
   imports: [
     CommonModule,
     MemberRoutingModule,
-    UtilitiesModule
+    UtilitiesModule,
+    ReactiveFormsModule
   ]
 })
 export class MemberModule { }

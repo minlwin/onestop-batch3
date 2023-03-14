@@ -1,1 +1,57 @@
-<p>balance-list works!</p>
+<widget-top-page [title]="title" [icon]="icon" [search]="true">
+
+  <form class="row" searchBar [formGroup]="form">
+
+    <div class="col-auto">
+      <label class="form-label">Ledger</label>
+      <select formControlName="ledger" class="form-select">
+        <option value="">All Ledgers</option>
+      </select>
+    </div>
+
+    <div class="col-auto">
+      <label class="form-label">Date From</label>
+      <input type="date" formControlName="dateFrom" class="form-control">
+    </div>
+
+    <div class="col-auto">
+      <label class="form-label">Date To</label>
+      <input type="date" formControlName="dateTo" class="form-control">
+    </div>
+
+    <div class="col btn-wrapper">
+      <button class="btn btn-outline-primary me-2">
+        <i class="bi bi-search me-2"></i> Search
+      </button>
+
+      <a [routerLink]="['/member', 'balance', type.toLowerCase(), 'edit']"  class="btn btn-outline-danger">
+        <i class="bi bi-plus-lg me-2"></i> Add New
+      </a>
+    </div>
+  </form>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Ledger</th>
+        <th>Remark</th>
+        <th class="text-end">Total Amount</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          <a [routerLink]="['/member', 'balance', type.toLowerCase(), 'details']" [queryParams]="{id: 1}" class="btn-link">
+            2023-03-10
+          </a>
+        </td>
+        <td>Stationary</td>
+        <td>Some Remark</td>
+        <td class="text-end">25,000</td>
+      </tr>
+    </tbody>
+  </table>
+
+</widget-top-page>

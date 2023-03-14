@@ -1,1 +1,54 @@
-<p>balance-details works!</p>
+<widget-top-page [icon]="icon" title="Balance Details">
+
+  <div class="row mb-3">
+    <div class="col">
+      <label class="form-label">Ledger</label>
+      <span class="form-control">Demo Ledger</span>
+    </div>
+
+    <div class="col-3">
+      <label class="form-label">Use Date</label>
+      <span class="form-control">2023-03-12</span>
+    </div>
+
+    <div class="col-3">
+      <label class="form-label">Total Amount</label>
+      <span class="form-control">100,000 MMK</span>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label class="form-label">Remark</label>
+    <p class="form-control">Some Remark</p>
+  </div>
+
+  <h5>
+    <i class="bi bi-list-check"></i> Details Items
+  </h5>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Reason</th>
+        <th class="text-end">Unit Price</th>
+        <th class="text-end">Quentity</th>
+        <th class="text-end">Total</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Demo Reason</td>
+        <td class="text-end">10,000</td>
+        <td class="text-end">5</td>
+        <td class="text-end">50,000</td>
+      </tr>
+    </tbody>
+</table>
+
+<a [routerLink]="['/member', 'balance', type.toLowerCase(), 'edit']" [queryParams]="{id: 1}" class="btn btn-outline-danger">
+  <i class="bi bi-pencil me-2"></i> Edit
+</a>
+</widget-top-page>
