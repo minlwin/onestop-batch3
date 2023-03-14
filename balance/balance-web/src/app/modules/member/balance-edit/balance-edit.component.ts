@@ -1,6 +1,10 @@
+import { identifierName } from '@angular/compiler';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { BalanceService } from 'src/app/services/balance.service';
+import { LedgerService } from 'src/app/services/ledger.service';
+import { LedgersComponent } from '../ledgers/ledgers.component';
 
 @Component({
   templateUrl: './balance-edit.component.html',
@@ -10,18 +14,64 @@ import { ActivatedRoute } from '@angular/router';
 export class BalanceEditComponent {
 
   form:FormGroup
+  ledgers:any[] = []
 
-  constructor(route:ActivatedRoute, builder:FormBuilder) {
+  constructor(
+    route:ActivatedRoute,
+    private builder:FormBuilder,
+    private router:Router,
+    private service:BalanceService,
+    ledgerService:LedgerService) {
 
     this.form = builder.group({
       id: 0,
-      type: '',
-      ledger: '',
+      ledger: ['', Validators.required],
+      useDate: ['', Validators.required],
+      remark: '',
+      items: builder.array([])
     })
 
+    this.addItem()
+
     route.data.subscribe(data => {
-      this.form.patchValue(data)
+      ledgerService.search(data).subscribe(result => {
+        this.ledgers = result
+      })
     })
+  }
+
+  addItem() {
+    this.items.push(this.builder.group({
+      id: 0,
+      reason: ['', Validators.required],
+      unitPrice: [0, Validators.min(1)],
+      quentity: [0, Validators.min(1)]
+    }))
+  }
+
+  removeItem(index:number) {
+    this.items.removeAt(index)
+
+    if(this.items.length == 0) {
+      this.addItem()
+    }
+  }
+
+  save() {
+    if(this.form.valid) {
+      this.service.save(this.form.value).subscribe(result => {
+        this.router.navigate(['/member', 'balence', `${result.ledger.type}`.toLowerCase(), 'details'], {queryParams: {id: result.id}})
+      })
+    }
+  }
+
+  get total() {
+    const array = this.items.value as any[]
+    return array.map(a => a.unitPrice * a.quentity).reduce((a, b) => a + b)
+  }
+
+  get items() {
+    return this.form.get('items') as FormArray
   }
 
   get title() {

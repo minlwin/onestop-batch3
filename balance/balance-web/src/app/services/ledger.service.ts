@@ -21,6 +21,6 @@ export class LedgerService {
   upload(file: File) {
     const form = new FormData
     form.append("file", file)
-    return this.http.post<any>(API, form)
+    return this.http.post<any>(`${API}/upload`, form)
   }
 }

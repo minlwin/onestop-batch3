@@ -20,8 +20,8 @@ export class BalanceReportComponent {
   }
 
   search() {
-    this.service.search(this.form.value).subscribe(result => {
-      this.list = result
+    this.service.searchReport(this.form.value).subscribe(result => {
+      this.list = result.list
     })
   }
 }

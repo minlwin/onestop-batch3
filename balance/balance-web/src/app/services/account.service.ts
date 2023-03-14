@@ -7,7 +7,6 @@ const API = `${BASE_API}/account`
 @Injectable({providedIn: 'any'})
 export class AccountService {
 
-
   constructor(private http:HttpClient) {}
 
   search(form: any) {

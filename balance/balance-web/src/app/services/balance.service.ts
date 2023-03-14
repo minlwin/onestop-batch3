@@ -13,7 +13,16 @@ export class BalanceService {
     return this.http.get<any[]>(API, {params: form})
   }
 
+  searchReport(form: any) {
+    return this.http.get<any>(API, {params: form})
+  }
+
   findById(id: string) {
     return this.http.get<any>(`${API}/${id}`)
+  }
+
+  save(form: any) {
+    return form.id ? this.http.put<any>(API, form) :
+      this.http.post<any>(API, form)
   }
 }

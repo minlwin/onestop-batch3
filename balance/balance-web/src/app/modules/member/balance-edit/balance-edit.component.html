@@ -5,24 +5,27 @@
     <div class="row">
       <!-- Ledger Selct -->
       <div class="col">
-        <widget-form-item label="Ledger">
-          <select class="form-select">
+        <widget-form-item label="Ledger" [valid]="form.get('ledger')?.valid">
+          <select formControlName="ledger" class="form-select">
             <option value="">Select One</option>
+            <option *ngFor="let item of ledgers" [value]="item.id">
+              {{item.name}}
+            </option>
           </select>
         </widget-form-item>
       </div>
 
       <!-- Date -->
       <div class="col-3">
-        <widget-form-item label="Use Date">
-          <input type="date" class="form-control">
+        <widget-form-item label="Use Date" [valid]="form.get('useDate')?.valid">
+          <input type="date" formControlName="useDate" class="form-control">
         </widget-form-item>
       </div>
 
       <!-- Total Amount -->
       <div class="col-4">
-        <widget-form-item label="Total Amount">
-          <span class="form-control">0</span>
+        <widget-form-item [valid]="total > 0" label="Total Amount">
+          <span class="form-control">{{total}}</span>
         </widget-form-item>
       </div>
 
@@ -31,29 +34,29 @@
     <!-- Details Item List -->
     <h5 class="mt-3"><i class="bi bi-list-check"></i> Details Items</h5>
 
-    <fieldset>
-      <div class="row">
+    <fieldset formArrayName="items">
+      <div *ngFor="let item of items.controls; index as i" [formGroupName]="i" class="row">
 
         <div class="col">
-          <widget-form-item label="Reason">
-            <input type="text" placeholder="Enter Reason" class="form-control">
+          <widget-form-item [valid]="item.get('reason')?.valid"  [label]="i == 0 ? 'Reason' : ''">
+            <input type="text" formControlName="reason" placeholder="Enter Reason" class="form-control">
           </widget-form-item>
         </div>
 
         <div class="col-3">
-          <widget-form-item label="Quentity">
-            <input type="number" class="form-control">
+          <widget-form-item [valid]="item.get('quentity')?.valid" [label]="i == 0 ? 'Quentity' : ''">
+            <input formControlName="quentity" type="number" class="form-control">
           </widget-form-item>
         </div>
         <div class="col-4">
           <div class="row">
             <div class="col">
-              <widget-form-item label="Unit Price">
-                <input type="number" class="form-control">
+              <widget-form-item [valid]="item.get('unitPrice')?.valid"  [label]="i == 0 ? 'Unit Price' : ''">
+                <input formControlName="unitPrice" type="number" class="form-control">
               </widget-form-item>
             </div>
-            <div class="col-auto btn-wrapper">
-              <button class="btn btn-outline-danger">
+            <div class="col-auto" [class.btn-wrapper]="i == 0">
+              <button (click)="removeItem(i)" [disabled]="item.invalid" class="btn btn-outline-danger">
                 <i class="bi bi-trash"></i>
               </button>
             </div>
@@ -66,15 +69,15 @@
     <!-- Remark -->
     <div class="mb-3">
       <label class="form-label">Remark</label>
-      <textarea class="form-control"></textarea>
+      <textarea formControlName="remark" class="form-control"></textarea>
     </div>
 
     <div>
-      <button class="btn btn-outline-primary me-2">
+      <button (click)="addItem()" [disabled]="items.invalid" class="btn btn-outline-primary me-2">
         <i class="bi bi-plus-lg me-2"></i> Add Item
       </button>
 
-      <button class="btn btn-outline-danger">
+      <button (click)="save()" [disabled]="form.invalid" class="btn btn-outline-danger">
         <i class="bi bi-save2 me-2"></i> Save
       </button>
     </div>
