@@ -6,6 +6,7 @@ import { AdminComponent } from './admin.component';
 import { MembersComponent } from './members/members.component';
 import { MemberDetailsComponent } from './member-details/member-details.component';
 import { UtilitiesModule } from '../utilities/utilities.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { UtilitiesModule } from '../utilities/utilities.module';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    UtilitiesModule
+    UtilitiesModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

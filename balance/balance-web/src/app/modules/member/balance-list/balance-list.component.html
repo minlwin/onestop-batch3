@@ -6,6 +6,7 @@
       <label class="form-label">Ledger</label>
       <select formControlName="ledger" class="form-select">
         <option value="">All Ledgers</option>
+        <option *ngFor="let item of ledgers" [value]="item.id">{{item.name}}</option>
       </select>
     </div>
 
@@ -20,7 +21,7 @@
     </div>
 
     <div class="col btn-wrapper">
-      <button class="btn btn-outline-primary me-2">
+      <button (click)="search()" class="btn btn-outline-primary me-2">
         <i class="bi bi-search me-2"></i> Search
       </button>
 
@@ -30,7 +31,9 @@
     </div>
   </form>
 
-  <table class="table table-striped">
+  <widget-no-data *ngIf="list.length == 0" [name]="type"></widget-no-data>
+
+  <table *ngIf="list.length > 0" class="table table-striped">
     <thead>
       <tr>
         <th>Date</th>
@@ -41,15 +44,15 @@
     </thead>
 
     <tbody>
-      <tr>
+      <tr *ngFor="let item of list">
         <td>
-          <a [routerLink]="['/member', 'balance', type.toLowerCase(), 'details']" [queryParams]="{id: 1}" class="btn-link">
-            2023-03-10
+          <a [routerLink]="['/member', 'balance', type.toLowerCase(), 'details']" [queryParams]="{id: item.id}" class="btn-link">
+            {{item.useDate}}
           </a>
         </td>
-        <td>Stationary</td>
-        <td>Some Remark</td>
-        <td class="text-end">25,000</td>
+        <td>{{item.ledger.name}}</td>
+        <td>{{item.remark}}</td>
+        <td class="text-end">{{item.total | number}} MMK</td>
       </tr>
     </tbody>
   </table>

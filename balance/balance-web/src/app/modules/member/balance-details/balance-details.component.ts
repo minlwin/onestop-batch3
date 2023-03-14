@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BalanceService } from 'src/app/services/balance.service';
 
 @Component({
   templateUrl: './balance-details.component.html',
@@ -10,17 +11,14 @@ export class BalanceDetailsComponent {
 
   balance:any
 
-  constructor(route:ActivatedRoute) {
+  constructor(route:ActivatedRoute, service:BalanceService) {
     route.queryParamMap.subscribe(result => {
       const id = result.get('id')
 
       // search balance data with id
-    })
-
-    route.data.subscribe(data => {
-      this.balance = {
-        ledger: data
-      }
+      service.findById(id!).subscribe(result => {
+        this.balance = result
+      })
     })
   }
 

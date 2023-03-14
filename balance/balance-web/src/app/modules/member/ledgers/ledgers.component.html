@@ -11,7 +11,7 @@
     </div>
 
     <div class="col btn-wrapper">
-      <button class="btn btn-outline-primary me-2">
+      <button (click)="search()" class="btn btn-outline-primary me-2">
         <i class="bi bi-search me-2"></i> Search
       </button>
 
@@ -30,16 +30,18 @@
       <div class="card">
         <div class="card-body">
           <div class="d-flex justify-content-between">
-            <h4>Some Ledger</h4>
-            <a href="#" class="btn-link">
+            <h4>{{item.name}}</h4>
+            <a (click)="edit(item)" class="btn-link">
               <i class="bi bi-pencil"></i>
             </a>
           </div>
-          <span class="text-secondary">Debit</span>
+          <span class="text-secondary">{{item.type}}</span>
         </div>
       </div>
     </div>
   </div>
+
+  <widget-no-data name="Ledger" *ngIf="list.length == 0"></widget-no-data>
 
   <form enctype="multipart/form-data" class="d-none">
     <input #fileInput (change)="upload(fileInput.files)" type="file" name="uploadFile">
@@ -50,21 +52,21 @@
 <widget-modal-dialog modalId="ledgerEditDialog">
   <h5 header>Add New Ledger</h5>
 
-  <form body>
-    <widget-form-item label="Ledger Type">
-      <select class="form-select">
+  <form [formGroup]="form" body>
+    <widget-form-item label="Ledger Type" [valid]="form.get('type')?.valid">
+      <select formControlName="type" class="form-select">
         <option value="">Select One</option>
         <option value="Credit">Credit</option>
         <option value="Debit">Debit</option>
       </select>
     </widget-form-item>
 
-    <widget-form-item label="Name">
-      <input type="text" placeholder="Enter Name" class="form-control">
+    <widget-form-item label="Name" [valid]="form.get('name')?.valid">
+      <input formControlName="name" type="text" placeholder="Enter Name" class="form-control">
     </widget-form-item>
   </form>
 
-  <button footer class="btn btn-outline-danger">
+  <button [disabled]="form.invalid" (click)="save()" footer class="btn btn-outline-danger">
     <i class="bi bi-save"></i> Save
   </button>
 </widget-modal-dialog>

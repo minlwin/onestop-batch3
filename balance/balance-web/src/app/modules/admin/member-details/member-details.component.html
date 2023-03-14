@@ -4,40 +4,40 @@
     <div class="row mb-3">
       <div class="col">
         <label class="form-label">Name</label>
-        <span class="form-control">Aung Aung</span>
+        <span class="form-control">{{dto.name}}</span>
       </div>
       <div class="col">
         <label class="form-label">Login Id</label>
-        <span class="form-control">aungaung</span>
+        <span class="form-control">{{dto.loginId}}</span>
       </div>
     </div>
 
     <div class="row mb-3">
       <div class="col">
         <label class="form-label">Phone</label>
-        <span class="form-control">09282827272</span>
+        <span class="form-control">{{dto.phone}}</span>
       </div>
       <div class="col">
         <label class="form-label">Email</label>
-        <span class="form-control">aung@gmail.com</span>
+        <span class="form-control">{{dto.email}}</span>
       </div>
     </div>
     <div class="row mb-3">
       <div class="col">
         <label class="form-label">Registration Date</label>
-        <span class="form-control">2023-03-10</span>
+        <span class="form-control">{{dto.registDate}}</span>
       </div>
       <div class="col">
         <label class="form-label">Status</label>
-        <span class="form-control">Apply</span>
+        <span class="form-control">{{dto.status}}</span>
       </div>
     </div>
 
     <div>
-      <button (click)="updateStatus('Approve')" class="btn btn-outline-success me-2">
+      <button *ngIf="dto.status != 'Approved'" (click)="updateStatus('Approve')" class="btn btn-outline-success me-2">
         <i class="bi bi-check me-2"></i> Approve
       </button>
-      <button (click)="updateStatus('Denied')" class="btn btn-outline-danger me-2">
+      <button *ngIf="dto.status != 'Denied'" (click)="updateStatus('Denied')" class="btn btn-outline-danger me-2">
         <i class="bi bi-x me-2"></i> Denied
       </button>
     </div>
