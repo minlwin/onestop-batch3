@@ -45,7 +45,8 @@ export class BalanceEditComponent {
       id: 0,
       reason: ['', Validators.required],
       unitPrice: [0, Validators.min(1)],
-      quentity: [0, Validators.min(1)]
+      quentity: [0, Validators.min(1)],
+      deleted: false
     }))
   }
 
