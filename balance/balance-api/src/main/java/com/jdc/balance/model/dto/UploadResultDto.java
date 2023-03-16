@@ -1,7 +1,8 @@
 package com.jdc.balance.model.dto;
 
-public record MessageDto(
+public record UploadResultDto(
 	boolean success,
+	int size,
 	String message
 		) {
 

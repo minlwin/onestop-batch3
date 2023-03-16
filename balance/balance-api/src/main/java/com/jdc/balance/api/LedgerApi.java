@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.jdc.balance.model.dto.LedgerDto;
 import com.jdc.balance.model.dto.LedgerType;
-import com.jdc.balance.model.dto.MessageDto;
+import com.jdc.balance.model.dto.UploadResultDto;
 import com.jdc.balance.model.form.LedgerForm;
 
 @RestController
@@ -22,7 +22,7 @@ import com.jdc.balance.model.form.LedgerForm;
 public class LedgerApi {
 
 	@GetMapping
-	public List<?> search(@RequestParam Optional<LedgerType> type) {
+	public List<LedgerDto> search(@RequestParam Optional<LedgerType> type) {
 		return List.of();
 	}
 	
@@ -37,7 +37,7 @@ public class LedgerApi {
 	}
 	
 	@PostMapping("upload")
-	public MessageDto upload(@RequestParam MultipartFile file) {
+	public UploadResultDto upload(@RequestParam MultipartFile file) {
 		return null;
 	}
 }
