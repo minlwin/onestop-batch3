@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.jdc.balance.model.dto.LedgerDto;
 import com.jdc.balance.model.dto.LedgerType;
 import com.jdc.balance.model.dto.UploadResultDto;
 import com.jdc.balance.model.form.LedgerForm;
@@ -22,17 +21,17 @@ import com.jdc.balance.model.form.LedgerForm;
 public class LedgerApi {
 
 	@GetMapping
-	public List<LedgerDto> search(@RequestParam Optional<LedgerType> type) {
+	public List<LedgerForm> search(@RequestParam Optional<LedgerType> type) {
 		return List.of();
 	}
 	
 	@PostMapping
-	public LedgerDto create(@RequestBody LedgerForm form) {
+	public LedgerForm create(@RequestBody LedgerForm form) {
 		return null;
 	}
 
 	@PutMapping
-	public LedgerDto update(@RequestBody LedgerForm form) {
+	public LedgerForm update(@RequestBody LedgerForm form) {
 		return null;
 	}
 	
