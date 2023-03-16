@@ -6,6 +6,7 @@
 	<packaging>war</packaging>
 	
 	<dependencies>
+		<!-- Web Dependencies -->
 		<dependency>
 			<groupId>jakarta.servlet</groupId>
 			<artifactId>jakarta.servlet-api</artifactId>
@@ -31,6 +32,7 @@
 			<version>2.14.2</version>
 		</dependency>
 		
+		<!-- Database Dependencies -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
@@ -55,6 +57,13 @@
 			<version>1.4</version>
 		</dependency>
 		
+		<!-- Bean Validation Dependencies -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>8.0.0.Final</version>
+		</dependency>
+				
 	</dependencies>
 	
 	<build>

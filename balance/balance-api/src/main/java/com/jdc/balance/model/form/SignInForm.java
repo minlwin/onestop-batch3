@@ -1,5 +1,11 @@
 package com.jdc.balance.model.form;
 
-public record SignInForm(String loginId, String password) {
+import jakarta.validation.constraints.NotBlank;
+
+public record SignInForm(
+		@NotBlank(message = "Please enter login id.")
+		String loginId, 
+		@NotBlank(message = "Please enter password.")
+		String password) {
 
 }

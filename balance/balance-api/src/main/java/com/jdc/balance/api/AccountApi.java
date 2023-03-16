@@ -3,12 +3,16 @@ package com.jdc.balance.api;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jdc.balance.model.dto.AccountDto;
@@ -32,7 +36,8 @@ public class AccountApi {
 	}
 	
 	@PutMapping("status")
-	AccountDto updateStatus(@RequestBody AccountStatusForm form) {
+	@ResponseStatus(code = HttpStatus.ACCEPTED)
+	AccountDto updateStatus(@Validated @RequestBody AccountStatusForm form, BindingResult result) {
 		return null;
 	}
 }

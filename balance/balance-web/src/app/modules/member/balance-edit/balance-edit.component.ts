@@ -1,10 +1,8 @@
-import { identifierName } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BalanceService } from 'src/app/services/balance.service';
 import { LedgerService } from 'src/app/services/ledger.service';
-import { LedgersComponent } from '../ledgers/ledgers.component';
 
 @Component({
   templateUrl: './balance-edit.component.html',
