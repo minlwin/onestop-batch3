@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { BalanceService } from 'src/app/services/balance.service';
 import { LedgerService } from 'src/app/services/ledger.service';
-import { LedgersComponent } from '../ledgers/ledgers.component';
 
 @Component({
   templateUrl: './balance-list.component.html',

@@ -14,7 +14,7 @@ export class BalanceService {
   }
 
   searchReport(form: any) {
-    return this.http.get<any>(API, {params: form})
+    return this.http.get<any>(`${API}/report`, {params: form})
   }
 
   findById(id: string) {
