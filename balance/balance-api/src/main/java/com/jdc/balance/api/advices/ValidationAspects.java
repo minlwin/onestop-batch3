@@ -10,10 +10,10 @@ import org.springframework.validation.BindingResult;
 @Configuration
 public class ValidationAspects {
 	
-	@Pointcut("within(com.jdc.balanc.api.*Api) and @within(org.springframework.web.bind.annotation.RestController)")
+	@Pointcut("within(com.jdc.balance.api.*Api) and @within(org.springframework.web.bind.annotation.RestController)")
 	public void allApiClasses() {}
 	
-	@Before(value = "appAipClasses() and args(..,result)", argNames = "result")
+	@Before(value = "allApiClasses() and args(..,result)", argNames = "result")
 	public void checkBindingResult(BindingResult result) {
 		if(result.hasErrors()) {
 			throw new ValidationException(result);

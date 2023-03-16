@@ -31,7 +31,7 @@ public class LedgerApi {
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public LedgerForm create(@RequestBody LedgerForm form) {
+	public LedgerForm create(@Validated @RequestBody LedgerForm form, BindingResult result) {
 		return null;
 	}
 

@@ -1,0 +1,3 @@
+Credit		Plase enter ledger name.
+	Student Fees	Please select ledger type.
+		Please select ledger type.,Plase enter ledger name.
