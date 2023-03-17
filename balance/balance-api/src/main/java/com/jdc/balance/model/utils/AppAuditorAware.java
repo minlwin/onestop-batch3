@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import com.jdc.balance.model.entity.Account;
 import com.jdc.balance.model.service.LoginUserService;
 
-@Component
+@Component(value = "appAuditorAware")
 public class AppAuditorAware implements AuditorAware<Account>{
 
 	@Autowired

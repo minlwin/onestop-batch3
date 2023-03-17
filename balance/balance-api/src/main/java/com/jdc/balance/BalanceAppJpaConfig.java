@@ -21,9 +21,12 @@ import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaAuditing
+@EnableJpaAuditing(auditorAwareRef = "appAuditorAware")
 @EnableJpaRepositories(basePackages = "com.jdc.balance.model.repo")
-@ComponentScan(basePackages = "com.jdc.balance.model.service")
+@ComponentScan(basePackages = {
+		"com.jdc.balance.model.service",
+		"com.jdc.balance.model.utils"
+})
 @PropertySource("classpath:/database.properties")
 public class BalanceAppJpaConfig {
 
