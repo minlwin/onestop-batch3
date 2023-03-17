@@ -21,7 +21,7 @@ import jakarta.persistence.EntityManagerFactory;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaAuditing(auditorAwareRef = "appAuditorAware")
+@EnableJpaAuditing
 @EnableJpaRepositories(basePackages = "com.jdc.balance.model.repo")
 @ComponentScan(basePackages = {
 		"com.jdc.balance.model.service",

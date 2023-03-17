@@ -35,6 +35,8 @@ import com.jdc.balance.model.form.LedgerForm;
 @Sql(statements = {
 		"set foreign_key_checks = 0",
 		"truncate table ACCOUNT",
+		"truncate table LEDGER",
+		"update LEDGER_SEQ set next_val = 0 where sequence_name = 'LEDGER'",
 		"insert into ACCOUNT values (1, 'test@gmail.com', 'test', 'Test User', '09 1111 2222', '2023-03-15', 1, 1)",
 		"set foreign_key_checks = 1"
 })

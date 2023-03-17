@@ -25,7 +25,7 @@ public class Balance implements Serializable{
 	
 	@Id
 	@GeneratedValue(generator = "BALANCE_SEQ")
-	@TableGenerator(name = "BALANCE_SEQ")
+	@TableGenerator(name = "BALANCE_SEQ", allocationSize = 1, initialValue = 0)
 	private long id;
 	
 	@ManyToOne(optional = false)

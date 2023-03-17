@@ -23,7 +23,7 @@ public class Account implements Serializable{
 	
 	@Id
 	@GeneratedValue(generator = "ACCOUNT_SEQ")
-	@TableGenerator(name = "ACCOUNT_SEQ")
+	@TableGenerator(name = "ACCOUNT_SEQ", allocationSize = 1, initialValue = 0)
 	private int id;
 	
 	@Column(nullable = false)
