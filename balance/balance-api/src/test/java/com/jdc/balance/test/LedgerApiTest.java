@@ -1,13 +1,8 @@
 package com.jdc.balance.test;
 
-import static org.hamcrest.CoreMatchers.allOf;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
+import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -32,13 +27,9 @@ import com.jdc.balance.model.form.LedgerForm;
 @WithMockUser(username = "test", authorities = "Member")
 @TestMethodOrder(value = OrderAnnotation.class)
 @SpringJUnitWebConfig(classes = BalanceAppWebConfig.class)
-@Sql(statements = {
-		"set foreign_key_checks = 0",
-		"truncate table ACCOUNT",
-		"truncate table LEDGER",
-		"update LEDGER_SEQ set next_val = 0 where sequence_name = 'LEDGER'",
-		"insert into ACCOUNT values (1, 'test@gmail.com', 'test', 'Test User', '09 1111 2222', '2023-03-15', 1, 1)",
-		"set foreign_key_checks = 1"
+@Sql(scripts = {
+		"classpath:/sql/test_users.sql",
+		"classpath:/sql/test_ledgers.sql",
 })
 public class LedgerApiTest {
 
@@ -52,7 +43,9 @@ public class LedgerApiTest {
 	
 	@Order(1)
 	@ParameterizedTest
-	@CsvFileSource(delimiter = '\t', resources = "/ledger_type_create_error.txt")
+	@CsvFileSource(
+			delimiter = '\t', 
+			resources = "/params/ledger_type_create_error.txt")
 	void test_create_no_name_error(LedgerType type, String name, String messages) {
 		var result = client.post()
 			.uri("/ledger")
@@ -63,16 +56,12 @@ public class LedgerApiTest {
 			.returnResult()
 			.getResponseBody();
 		
-		assertNotNull(result);
-		assertEquals(Type.Validation, result.type());
-		
 		var expectedMessages = messages.split(",");
-		assertEquals(expectedMessages.length, result.messages().size());
 		
-		assertThat(result.messages(), allOf(
-				notNullValue(),
-				containsInAnyOrder(expectedMessages)
-		));
+		assertThat(result).matches(a -> 
+			a.type().equals(Type.Validation) 
+			&& a.messages().containsAll(Arrays.asList(expectedMessages)));
+		
 	}
 	
 	@Order(2)
@@ -91,7 +80,9 @@ public class LedgerApiTest {
 				.returnResult()
 				.getResponseBody();
 		
-		
-		assertThat(result, is(new LedgerForm(1, type, name)));
+		assertThat(result).matches(data -> 
+				data.id() == 7 && 
+				data.type() == type &&
+				data.name().equals(name));
 	}
 }
