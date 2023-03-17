@@ -3,6 +3,7 @@ package com.jdc.balance.api;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -18,26 +19,30 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jdc.balance.model.dto.AccountDto;
 import com.jdc.balance.model.dto.AccountStatus;
 import com.jdc.balance.model.form.AccountStatusForm;
+import com.jdc.balance.model.service.AccountService;
 
 @RestController
 @RequestMapping("account")
 public class AccountApi {
+	
+	@Autowired
+	private AccountService service;
 
 	@GetMapping
 	List<AccountDto> search(
 			@RequestParam Optional<AccountStatus> status, 
 			@RequestParam Optional<String> name) {
-		return List.of();
+		return service.search(status, name);
 	}
 	
 	@GetMapping("{id}")
 	AccountDto findById(@PathVariable int id) {
-		return null;
+		return service.findById(id);
 	}
 	
 	@PutMapping("status")
 	@ResponseStatus(code = HttpStatus.ACCEPTED)
 	AccountDto updateStatus(@Validated @RequestBody AccountStatusForm form, BindingResult result) {
-		return null;
+		return service.updateStatus(form);
 	}
 }

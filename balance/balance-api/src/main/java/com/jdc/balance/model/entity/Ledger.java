@@ -2,6 +2,8 @@ package com.jdc.balance.model.entity;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.CreatedBy;
+
 import com.jdc.balance.model.dto.LedgerType;
 
 import jakarta.persistence.Column;
@@ -30,6 +32,7 @@ public class Ledger implements Serializable{
 	@Column(nullable = false)
 	private String name;
 	
+	@CreatedBy
 	@ManyToOne(optional = false)
 	private Account owner;
 }

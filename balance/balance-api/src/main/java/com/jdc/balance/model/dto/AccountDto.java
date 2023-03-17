@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.jdc.balance.model.entity.Account;
+
 public record AccountDto(
 	int id,
 	String name,
@@ -14,5 +16,10 @@ public record AccountDto(
 	String email,
 	String phone
 		) {
+
+	public static AccountDto from(Account entity) {
+		return new AccountDto(entity.getId(), entity.getName(), entity.getLoginId(), 
+				entity.getStatus(), entity.getRegistDate(), entity.getEmail(), entity.getPhone());
+	}
 
 }
