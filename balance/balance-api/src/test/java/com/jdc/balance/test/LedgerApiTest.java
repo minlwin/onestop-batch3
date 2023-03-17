@@ -85,4 +85,37 @@ public class LedgerApiTest {
 				data.type() == type &&
 				data.name().equals(name));
 	}
+	
+	
+	@Order(3)
+	void test_update_no_data_error() {
+		
+	}
+
+	@Order(4)
+	void test_update_validation_error() {
+		
+	}
+	
+	
+	@Order(5)
+	void test_update_success() {
+		
+	}
+	
+	@Order(6)
+	void test_upload_validation_error() {
+		
+	}
+	
+	
+	@Order(7)
+	void test_upload_success() {
+		
+	}
+	
+	@Order(8)
+	void test_search() {
+		
+	}
 }
