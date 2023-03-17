@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.jdc.balance.model.entity.Balance;
 import com.jdc.balance.model.form.LedgerForm;
 
 public record BalanceDto(
@@ -15,5 +16,16 @@ public record BalanceDto(
 		String remark,
 		List<BalanceItemDto> items
 		) {
+
+	public static BalanceDto from(Balance entity) {
+		return new BalanceDto(
+				entity.getId(), 
+				LedgerForm.from(entity.getLedger()), 
+				entity.getUseDate(), 
+				entity.getRemark(), 
+				entity.getItems().stream()
+					.map(BalanceItemDto::from)
+					.toList());
+	}
 
 }

@@ -2,14 +2,22 @@ package com.jdc.balance.model.dto;
 
 import java.time.LocalDate;
 
+import com.jdc.balance.model.entity.Balance;
 import com.jdc.balance.model.form.LedgerForm;
 
 public record BalanceListDto(
 		long id,
 		LocalDate useDate,
 		LedgerForm ledger,
-		int total,
-		String remark
-		) {
+		String remark,
+		int total) {
 
+	public static BalanceListDto from(Balance entity) {
+		return new BalanceListDto(entity.getId(), 
+				entity.getUseDate(), 
+				LedgerForm.from(entity.getLedger()), 
+				entity.getRemark(),
+				entity.getItems().stream()
+					.mapToInt(a -> a.getQuentity() * a.getUnitPrice()).sum());
+	}
 }

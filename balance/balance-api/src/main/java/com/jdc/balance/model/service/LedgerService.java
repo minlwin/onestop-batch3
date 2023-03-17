@@ -2,6 +2,8 @@ package com.jdc.balance.model.service;
 
 import static com.jdc.balance.model.utils.Exceptions.entityNotFoundException;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,7 +44,25 @@ public class LedgerService {
 	}
 
 	public UploadResultDto upload(MultipartFile file) {
-		return null;
+		
+		try(var br = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
+			String line = null;
+			var count = 0;
+			
+			while(null != (line = br.readLine())) {
+				var array = line.split("\t");
+				var entity = new Ledger();
+				entity.setType(LedgerType.valueOf(array[0]));
+				entity.setName(array[1]);
+				
+				repo.save(entity);
+				count ++;
+			}
+			
+			return UploadResultDto.success(count);
+		} catch (Exception e) {
+			return UploadResultDto.fails("File Format Error");
+		}
 	}
 
 	@Transactional(readOnly = true)
