@@ -29,7 +29,6 @@ import com.jdc.balance.model.form.LedgerForm;
 		"classpath:/sql/test_users.sql",
 		"classpath:/sql/test_ledgers.sql",
 })
-@Order(3)
 public class LedgerApiUpdateTest {
 
 	private WebTestClient client;
@@ -51,7 +50,7 @@ public class LedgerApiUpdateTest {
 				.uri("/ledger")
 				.bodyValue(new LedgerForm(id, type, name))
 				.exchange()
-				.expectStatus().isNotModified()
+				.expectStatus().isNoContent()
 				.expectBody(MessageDto.class)
 				.returnResult()
 				.getResponseBody();

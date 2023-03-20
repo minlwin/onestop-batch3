@@ -1,13 +1,19 @@
 package com.jdc.balance.test;
 
-import org.junit.jupiter.api.ClassOrderer.OrderAnnotation;
-import org.junit.jupiter.api.TestClassOrder;
-import org.junit.platform.suite.api.SelectPackages;
+import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
 
+import com.jdc.balance.test.ledger.LedgerApiCreateTest;
+import com.jdc.balance.test.ledger.LedgerApiSearchTest;
+import com.jdc.balance.test.ledger.LedgerApiUpdateTest;
+import com.jdc.balance.test.ledger.LedgerApiUploadTest;
+
 @Suite
-@SelectPackages("com.jdc.balance.test.ledger")
-@TestClassOrder(OrderAnnotation.class)
+@SelectClasses({
+	LedgerApiCreateTest.class, 
+	LedgerApiUpdateTest.class, 
+	LedgerApiUploadTest.class, 
+	LedgerApiSearchTest.class})
 public class LedgerApiTest {
 
 }

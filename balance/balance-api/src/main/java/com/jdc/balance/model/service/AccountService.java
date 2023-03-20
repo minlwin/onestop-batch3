@@ -52,6 +52,6 @@ public class AccountService {
 
 	private Specification<Account> withName(Optional<String> data) {
 		return data.isEmpty() ? Specification.where(null) : 
-			(root, query, cb) -> cb.like(cb.lower(root.get("status")), data.get().toLowerCase().concat("%"));
+			(root, query, cb) -> cb.like(cb.lower(root.get("name")), data.get().toLowerCase().concat("%"));
 	}
 }

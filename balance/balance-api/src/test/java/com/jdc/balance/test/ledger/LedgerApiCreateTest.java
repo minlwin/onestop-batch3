@@ -31,7 +31,6 @@ import com.jdc.balance.model.form.LedgerForm;
 		"classpath:/sql/test_users.sql",
 		"classpath:/sql/test_ledgers.sql",
 })
-@Order(1)
 public class LedgerApiCreateTest {
 
 	private WebTestClient client;

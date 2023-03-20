@@ -28,7 +28,7 @@ public class ValidationExceptionHandler {
 		return new MessageDto(Type.Validation, e.getMessages());
 	}
 	
-	@ResponseStatus(code = HttpStatus.NOT_MODIFIED)
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	@ExceptionHandler(EntityNotFoundException.class)
 	public MessageDto handle(EntityNotFoundException e) {
 		return new MessageDto(Type.Business, List.of(e.getMessage()));
