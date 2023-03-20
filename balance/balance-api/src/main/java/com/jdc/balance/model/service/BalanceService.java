@@ -41,6 +41,8 @@ public class BalanceService {
 	@Transactional
 	public BalanceDto create(BalanceForm form) {
 		
+		var loginUser = userService.getLoginUser().orElseThrow();
+		
 		var ledger = ledgerRepo.findById(form.ledger())
 				.orElseThrow(() -> entityNotFoundException("ledger", form.ledger()));
 		
@@ -48,6 +50,7 @@ public class BalanceService {
 		balance.setLedger(ledger);
 		balance.setRemark(form.remark());
 		balance.setUseDate(form.useDate());
+		balance.setOwner(loginUser);
 		
 		balance = balanceRepo.save(balance);
 		

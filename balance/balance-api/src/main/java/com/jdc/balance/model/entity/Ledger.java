@@ -2,14 +2,10 @@ package com.jdc.balance.model.entity;
 
 import java.io.Serializable;
 
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import com.jdc.balance.model.dto.LedgerType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -19,7 +15,6 @@ import lombok.Data;
 
 @Data
 @Entity
-@EntityListeners(AuditingEntityListener.class)
 @Table(name = "LEDGER")
 public class Ledger implements Serializable{
 
@@ -35,7 +30,6 @@ public class Ledger implements Serializable{
 	@Column(nullable = false)
 	private String name;
 	
-	@CreatedBy
 	@ManyToOne(optional = false)
 	private Account owner;
 }

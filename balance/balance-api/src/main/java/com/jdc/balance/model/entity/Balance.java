@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.data.annotation.CreatedBy;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,7 +34,6 @@ public class Balance implements Serializable{
 	
 	private String remark;
 	
-	@CreatedBy
 	@ManyToOne(optional = false)
 	private Account owner;
 	
