@@ -42,7 +42,9 @@ public class SecurityApiSignInTest {
 
 	@Order(1)
 	@ParameterizedTest
-	@CsvSource(value = { ":password:Please enter login id.", "admin::Please enter password.",
+	@CsvSource(value = { 
+			":password:Please enter login id.", 
+			"admin::Please enter password.",
 			"::Please enter login id.,Please enter password." }, delimiter = ':')
 	void test_sign_in_validation_error(String loginId, String password, String messages) {
 		var result = client.post().uri(builder -> builder.path("/security/sign-in").build())
