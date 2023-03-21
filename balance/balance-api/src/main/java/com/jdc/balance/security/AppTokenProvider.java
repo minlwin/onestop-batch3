@@ -41,7 +41,7 @@ public class AppTokenProvider {
 					.parseClaimsJws(tokenValue);
 				
 				var loginId = jwt.getBody().getSubject();
-				var roles = jwt.getBody().toString();
+				var roles = jwt.getBody().get(roleName).toString();
 				
 				var auth = new UsernamePasswordAuthenticationToken(loginId, null, 
 						AuthorityUtils.createAuthorityList(roles.split(",")));

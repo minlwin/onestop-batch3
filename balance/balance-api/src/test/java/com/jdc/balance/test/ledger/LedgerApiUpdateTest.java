@@ -16,6 +16,8 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.client.MockMvcWebTestClient;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.jdc.balance.BalanceAppJpaConfig;
+import com.jdc.balance.BalanceAppSecurityConfig;
 import com.jdc.balance.BalanceAppWebConfig;
 import com.jdc.balance.model.dto.LedgerType;
 import com.jdc.balance.model.dto.MessageDto;
@@ -24,7 +26,11 @@ import com.jdc.balance.model.form.LedgerForm;
 
 @WithMockUser(username = "test", authorities = "Member")
 @TestMethodOrder(value = OrderAnnotation.class)
-@SpringJUnitWebConfig(classes = BalanceAppWebConfig.class)
+@SpringJUnitWebConfig(classes = {
+		BalanceAppJpaConfig.class,
+		BalanceAppSecurityConfig.class,
+		BalanceAppWebConfig.class
+})
 @Sql(scripts = {
 		"classpath:/sql/test_users.sql",
 		"classpath:/sql/test_ledgers.sql",

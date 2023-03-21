@@ -8,10 +8,16 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.client.MockMvcWebTestClient;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.jdc.balance.BalanceAppJpaConfig;
+import com.jdc.balance.BalanceAppSecurityConfig;
 import com.jdc.balance.BalanceAppWebConfig;
 
 @WithMockUser(username = "test", authorities = "Member")
-@SpringJUnitWebConfig(classes = BalanceAppWebConfig.class)
+@SpringJUnitWebConfig(classes = {
+		BalanceAppJpaConfig.class,
+		BalanceAppSecurityConfig.class,
+		BalanceAppWebConfig.class
+})
 @Sql(scripts = {
 		"classpath:/sql/test_users.sql",
 		"classpath:/sql/test_ledgers.sql",
