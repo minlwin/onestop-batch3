@@ -33,6 +33,9 @@ public class Account implements Serializable{
 	private String loginId;
 	
 	@Column(nullable = false)
+	private String password;
+	
+	@Column(nullable = false)
 	private Role role;
 	
 	@Column(nullable = false)
@@ -41,10 +44,7 @@ public class Account implements Serializable{
 	@Column(nullable = false, name = "regist_date")
 	private LocalDate registDate;
 	
-	@Column(nullable = false)
 	private String email;
-	
-	@Column(nullable = false)
 	private String phone;
 
 }

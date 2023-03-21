@@ -10,4 +10,7 @@ public record SignUpForm(
 		@NotBlank(message = "Please enter password.")
 		String password) {
 
+	public SignInForm signInForm() {
+		return new SignInForm(loginId, password);
+	}
 }
