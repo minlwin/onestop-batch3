@@ -26,7 +26,7 @@ public class AppAdminUserInitializer {
 	@EventListener(value = ContextRefreshedEvent.class)
 	public void initAdminUser() {
 		
-		var adminUserCount = repo.findCountByRole(Role.Admin);
+		var adminUserCount = repo.countByRole(Role.Admin);
 		
 		if(adminUserCount == 0) {
 			var admin = new Account();

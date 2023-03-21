@@ -9,7 +9,7 @@ public class BalanceAppInitializer extends AbstractAnnotationConfigDispatcherSer
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return null;
+		return new Class<?>[] {BalanceAppJpaConfig.class, BalanceAppSecurityConfig.class};
 	}
 
 	@Override
@@ -26,5 +26,5 @@ public class BalanceAppInitializer extends AbstractAnnotationConfigDispatcherSer
 	protected void customizeRegistration(Dynamic registration) {
 		registration.setMultipartConfig(new MultipartConfigElement(""));
 	}
-
+	
 }

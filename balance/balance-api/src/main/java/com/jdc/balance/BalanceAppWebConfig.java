@@ -2,12 +2,9 @@ package com.jdc.balance;
 
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.Import;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -15,10 +12,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebMvc
 @EnableAspectJAutoProxy
-@Import({
-	BalanceAppJpaConfig.class,
-	BalanceAppSecurityConfig.class
-})
 @ComponentScan(basePackages = "com.jdc.balance.api")
 public class BalanceAppWebConfig implements WebMvcConfigurer{
 
@@ -32,11 +25,6 @@ public class BalanceAppWebConfig implements WebMvcConfigurer{
 			.allowedMethods("*")
 			.allowedHeaders(tokenName)
 			.exposedHeaders(tokenName);
-	}
-	
-	@Bean
-	LocalValidatorFactoryBean localValidatorFactoryBean() {
-		return new LocalValidatorFactoryBean();
 	}
 	
 }

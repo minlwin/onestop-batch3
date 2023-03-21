@@ -11,6 +11,6 @@ public interface AccountRepo extends JpaRepositoryImplementation<Account, Intege
 
 	Optional<Account> findOneByLoginId(String loginId);
 
-	Long findCountByRole(Role admin);
+	Long countByRole(Role admin);
 
 }
