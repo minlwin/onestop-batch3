@@ -19,16 +19,14 @@ public class AppUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		var result = repo.findOneByLoginId(username);
-		
-		return result
+		return repo.findOneByLoginId(username)
 			.map(user -> User.builder()
 					.username(username)
 					.password(user.getPassword())
 					.authorities(user.getRole().name())
 					.accountLocked(user.getStatus() == AccountStatus.Denied)
 					.build())
-			.orElseThrow(() -> new UsernameNotFoundException(username));
+			.orElseThrow(() -> new LoginIdInvalidException());
 	}
 
 }
