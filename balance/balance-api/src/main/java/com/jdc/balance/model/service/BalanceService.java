@@ -1,6 +1,6 @@
 package com.jdc.balance.model.service;
 
-import static com.jdc.balance.model.utils.Exceptions.entityNotFoundException;
+import static com.jdc.balance.model.Exceptions.entityNotFoundException;
 
 import java.time.LocalDate;
 import java.util.List;

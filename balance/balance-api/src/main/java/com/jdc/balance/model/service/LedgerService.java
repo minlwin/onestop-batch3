@@ -1,6 +1,6 @@
 package com.jdc.balance.model.service;
 
-import static com.jdc.balance.model.utils.Exceptions.entityNotFoundException;
+import static com.jdc.balance.model.Exceptions.entityNotFoundException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,12 +17,12 @@ import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.jdc.balance.model.BalanceAppException;
 import com.jdc.balance.model.dto.LedgerType;
 import com.jdc.balance.model.dto.UploadResultDto;
 import com.jdc.balance.model.entity.Ledger;
 import com.jdc.balance.model.form.LedgerForm;
 import com.jdc.balance.model.repo.LedgerRepo;
-import com.jdc.balance.model.utils.BalanceAppException;
 
 
 @Service

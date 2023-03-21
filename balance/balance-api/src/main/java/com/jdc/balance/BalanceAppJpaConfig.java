@@ -14,8 +14,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
@@ -24,10 +22,7 @@ import jakarta.persistence.EntityManagerFactory;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "com.jdc.balance.model.repo")
-@ComponentScan(basePackages = {
-		"com.jdc.balance.model.service",
-		"com.jdc.balance.model.utils"
-})
+@ComponentScan(basePackages = "com.jdc.balance.model")
 @PropertySource("classpath:/database.properties")
 public class BalanceAppJpaConfig {
 
@@ -35,11 +30,6 @@ public class BalanceAppJpaConfig {
 	@Value("${app.db.user}") private String user;
 	@Value("${app.db.password}") private String password;
 
-	@Bean
-	PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-	
 	@Bean
 	DataSource dataSource() {
 		var bean = new BasicDataSource();
@@ -72,6 +62,4 @@ public class BalanceAppJpaConfig {
 	LocalValidatorFactoryBean localValidatorFactoryBean() {
 		return new LocalValidatorFactoryBean();
 	}
-	
-	
 }

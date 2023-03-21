@@ -1,4 +1,4 @@
-package com.jdc.balance.model.utils;
+package com.jdc.balance.model;
 
 import jakarta.persistence.EntityNotFoundException;
 

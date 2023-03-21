@@ -1,6 +1,10 @@
-package com.jdc.balance;
+package com.jdc.balance.utils;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import com.jdc.balance.BalanceAppJpaConfig;
+import com.jdc.balance.BalanceAppSecurityConfig;
+import com.jdc.balance.BalanceAppWebConfig;
 
 import jakarta.servlet.MultipartConfigElement;
 import jakarta.servlet.ServletRegistration.Dynamic;

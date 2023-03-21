@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.jdc.balance.model.BalanceAppException;
+import com.jdc.balance.model.LoginIdInvalidException;
 import com.jdc.balance.model.dto.MessageDto;
 import com.jdc.balance.model.dto.MessageDto.Type;
-import com.jdc.balance.model.utils.BalanceAppException;
-import com.jdc.balance.security.LoginIdInvalidException;
 
 import jakarta.persistence.EntityNotFoundException;
 

@@ -1,4 +1,4 @@
-package com.jdc.balance.security;
+package com.jdc.balance.model;
 
 public class LoginIdInvalidException extends RuntimeException{
 

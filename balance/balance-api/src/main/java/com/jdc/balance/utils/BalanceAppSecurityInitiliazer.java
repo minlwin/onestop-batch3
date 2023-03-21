@@ -1,4 +1,4 @@
-package com.jdc.balance;
+package com.jdc.balance.utils;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
