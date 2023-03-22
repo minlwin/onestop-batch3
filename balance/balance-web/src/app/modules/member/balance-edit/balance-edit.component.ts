@@ -13,6 +13,7 @@ export class BalanceEditComponent {
 
   form:FormGroup
   ledgers:any[] = []
+  type:any
 
   constructor(
     route:ActivatedRoute,
@@ -32,9 +33,30 @@ export class BalanceEditComponent {
     this.addItem()
 
     route.data.subscribe(data => {
+
+      this.type = data['type']
+
       ledgerService.search(data).subscribe(result => {
         this.ledgers = result
       })
+    })
+
+    route.queryParamMap.subscribe(params => {
+      let id = params.get('id')
+      if(id) {
+        service.findById(id).subscribe(result => {
+          const {items, ledger, ... data} = result
+          this.form.patchValue(data)
+          this.form.get('ledger')?.setValue(ledger.id)
+
+          const balanceItems = items as any[]
+
+          this.items.clear()
+          for(let item of balanceItems) {
+            this.setItem(item)
+          }
+        })
+      }
     })
   }
 
@@ -48,10 +70,36 @@ export class BalanceEditComponent {
     }))
   }
 
-  removeItem(index:number) {
-    this.items.removeAt(index)
+  setItem(item:any) {
+    this.items.push(this.builder.group({
+      id: item.id,
+      reason: [item.reason, Validators.required],
+      unitPrice: [item.unitPrice, Validators.min(1)],
+      quentity: [item.quentity, Validators.min(1)],
+      deleted: false
+    }))
+  }
 
-    if(this.items.length == 0) {
+  canDisplay(index:number) {
+    const target = this.items.controls.at(index)
+
+    if(target) {
+      const item = target as FormGroup
+      return !item.get('deleted')?.value
+    }
+    return true
+  }
+
+  removeItem(index:number) {
+    const target = this.items.controls.at(index)
+
+    if(target) {
+      const item = target as FormGroup
+      item.patchValue({deleted : true})
+    }
+
+    const array = this.items.value as any[]
+    if(array.filter(data => !data.deleted).length = 0) {
       this.addItem()
     }
   }
@@ -59,7 +107,7 @@ export class BalanceEditComponent {
   save() {
     if(this.form.valid) {
       this.service.save(this.form.value).subscribe(result => {
-        this.router.navigate(['/member', 'balence', `${result.ledger.type}`.toLowerCase(), 'details'], {queryParams: {id: result.id}})
+        this.router.navigate(['/member', 'balance', `${result.ledger.type}`.toLowerCase(), 'details'], {queryParams: {id: result.id}})
       })
     }
   }
@@ -81,7 +129,4 @@ export class BalanceEditComponent {
     return this.form.get('id')?.value ? 'bi-pencil' : 'bi-plus-lg'
   }
 
-  get type():string {
-    return this.form.get('type')?.value
-  }
 }

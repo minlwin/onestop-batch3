@@ -31,5 +31,10 @@ public class BalanceItem implements Serializable{
 	@Column(nullable = false, name = "unit_price")
 	private int unitPrice;
 	@Column(nullable = false)
-	private int quentity;	
+	private int quentity;
+	
+	public void setBalance(Balance b) {
+		b.getItems().add(this);
+		this.balance = b;
+	}
 }

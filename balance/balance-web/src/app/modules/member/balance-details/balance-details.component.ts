@@ -22,6 +22,14 @@ export class BalanceDetailsComponent {
     })
   }
 
+  get total() {
+    if(this.balance) {
+      const items = this.balance.items as any[]
+      return items.map(a => a.unitPrice * a.quentity).reduce((a, b) => a + b)
+    }
+    return 0
+  }
+
   get type() {
     return this.balance?.ledger?.type
   }

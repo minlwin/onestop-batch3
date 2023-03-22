@@ -13,4 +13,7 @@ export class SecurityService {
     return this.http.post<any>(`${API}/sign-in`, form)
   }
 
+  signUp(form:any) {
+    return this.http.post<any>(`${API}/sign-up`, form)
+  }
 }

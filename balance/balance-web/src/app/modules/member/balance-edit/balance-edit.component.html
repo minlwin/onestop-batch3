@@ -35,32 +35,35 @@
     <h5 class="mt-3"><i class="bi bi-list-check"></i> Details Items</h5>
 
     <fieldset formArrayName="items">
-      <div *ngFor="let item of items.controls; index as i" [formGroupName]="i" class="row">
+      <div *ngFor="let item of items.controls; index as i" >
+        <div *ngIf="canDisplay(i)" class="row" [formGroupName]="i" class="row">
 
-        <div class="col">
-          <widget-form-item [valid]="item.get('reason')?.valid"  [label]="i == 0 ? 'Reason' : ''">
-            <input type="text" formControlName="reason" placeholder="Enter Reason" class="form-control">
-          </widget-form-item>
-        </div>
+          <div class="col">
+            <widget-form-item [valid]="item.get('reason')?.valid"  [label]="i == 0 ? 'Reason' : ''">
+              <input type="text" formControlName="reason" placeholder="Enter Reason" class="form-control">
+            </widget-form-item>
+          </div>
 
-        <div class="col-3">
-          <widget-form-item [valid]="item.get('quentity')?.valid" [label]="i == 0 ? 'Quentity' : ''">
-            <input formControlName="quentity" type="number" class="form-control">
-          </widget-form-item>
-        </div>
-        <div class="col-4">
-          <div class="row">
-            <div class="col">
-              <widget-form-item [valid]="item.get('unitPrice')?.valid"  [label]="i == 0 ? 'Unit Price' : ''">
-                <input formControlName="unitPrice" type="number" class="form-control">
-              </widget-form-item>
-            </div>
-            <div class="col-auto" [class.btn-wrapper]="i == 0">
-              <button (click)="removeItem(i)" [disabled]="item.invalid" class="btn btn-outline-danger">
-                <i class="bi bi-trash"></i>
-              </button>
+          <div class="col-3">
+            <widget-form-item [valid]="item.get('quentity')?.valid" [label]="i == 0 ? 'Quentity' : ''">
+              <input formControlName="quentity" type="number" class="form-control">
+            </widget-form-item>
+          </div>
+          <div class="col-4">
+            <div class="row">
+              <div class="col">
+                <widget-form-item [valid]="item.get('unitPrice')?.valid"  [label]="i == 0 ? 'Unit Price' : ''">
+                  <input formControlName="unitPrice" type="number" class="form-control">
+                </widget-form-item>
+              </div>
+              <div class="col-auto" [class.btn-wrapper]="i == 0">
+                <button (click)="removeItem(i)" [disabled]="item.invalid" class="btn btn-outline-danger">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
             </div>
           </div>
+
         </div>
 
       </div>

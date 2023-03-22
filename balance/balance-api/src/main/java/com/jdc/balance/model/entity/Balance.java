@@ -2,6 +2,7 @@ package com.jdc.balance.model.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -38,5 +39,6 @@ public class Balance implements Serializable{
 	private Account owner;
 	
 	@OneToMany(mappedBy = "balance")
-	private List<BalanceItem> items;
+	private List<BalanceItem> items = new ArrayList<>();
+	
 }

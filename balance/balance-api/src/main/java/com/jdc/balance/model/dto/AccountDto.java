@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jdc.balance.model.entity.Account;
 
 public record AccountDto(
@@ -11,6 +12,7 @@ public record AccountDto(
 	String name,
 	String loginId,
 	AccountStatus status,
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	LocalDate registDate,
 	String email,

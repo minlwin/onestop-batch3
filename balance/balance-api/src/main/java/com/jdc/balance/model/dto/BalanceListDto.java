@@ -2,11 +2,13 @@ package com.jdc.balance.model.dto;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jdc.balance.model.entity.Balance;
 import com.jdc.balance.model.form.LedgerForm;
 
 public record BalanceListDto(
 		long id,
+		@JsonFormat(pattern = "yyyy-MM-dd")
 		LocalDate useDate,
 		LedgerForm ledger,
 		String remark,

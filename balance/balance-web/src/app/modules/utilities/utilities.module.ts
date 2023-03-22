@@ -12,7 +12,7 @@ import { NoDataComponent } from './no-data/no-data.component';
     FormItemComponent,
     TopPageComponent,
     ModalDialogComponent,
-    NoDataComponent
+    NoDataComponent,
   ],
   imports: [
     CommonModule
@@ -21,7 +21,7 @@ import { NoDataComponent } from './no-data/no-data.component';
     FormItemComponent,
     TopPageComponent,
     ModalDialogComponent,
-    NoDataComponent
+    NoDataComponent,
   ]
 })
 export class UtilitiesModule { }

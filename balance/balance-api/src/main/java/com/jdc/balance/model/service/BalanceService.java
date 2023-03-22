@@ -52,7 +52,7 @@ public class BalanceService {
 		balance.setUseDate(form.useDate());
 		balance.setOwner(loginUser);
 		
-		balance = balanceRepo.save(balance);
+		balance = balanceRepo.saveAndFlush(balance);
 		
 		for(var itemForm : form.items()) {
 			createItem(itemForm, balance);
@@ -147,7 +147,7 @@ public class BalanceService {
 		item.setReason(itemForm.reason());
 		item.setQuentity(itemForm.quentity());
 		item.setUnitPrice(itemForm.unitPrice());
-		itemRepo.save(item);
+		itemRepo.saveAndFlush(item);
 	}
 
 

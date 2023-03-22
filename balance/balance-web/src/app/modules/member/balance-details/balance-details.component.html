@@ -13,13 +13,13 @@
 
     <div class="col-3">
       <label class="form-label">Total Amount</label>
-      <span class="form-control">{{balance?.total | number}} MMK</span>
+      <span class="form-control">{{total | number}} MMK</span>
     </div>
   </div>
 
   <div class="mb-4">
     <label class="form-label">Remark</label>
-    <p class="form-control">{{balance?.remark}}</p>
+    <p class="form-control">{{balance?.remark || 'No Remark'}}</p>
   </div>
 
   <h5>
@@ -48,7 +48,7 @@
     </tbody>
 </table>
 
-<a [routerLink]="['/member', 'balance', type.toLowerCase(), 'edit']" [queryParams]="{id: balance?.id}" class="btn btn-outline-danger">
+<a [routerLink]="['/member', 'balance', type?.toLowerCase(), 'edit']" [queryParams]="{id: balance?.id}" class="btn btn-outline-danger">
   <i class="bi bi-pencil me-2"></i> Edit
 </a>
 </widget-top-page>
