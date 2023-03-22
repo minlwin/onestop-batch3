@@ -45,11 +45,14 @@ public class SecurityApiSignInTest {
 	@CsvSource(value = { 
 			":password:Please enter login id.", 
 			"admin::Please enter password.",
-			"::Please enter login id.,Please enter password." }, delimiter = ':')
+			"::Please enter login id.,Please enter password." }, delimiter = ':'
+	)
 	void test_sign_in_validation_error(String loginId, String password, String messages) {
+		
 		var result = client.post().uri(builder -> builder.path("/security/sign-in").build())
-				.bodyValue(new SignInForm(loginId, password)).exchange().expectStatus()
-				.isEqualTo(HttpStatusCode.valueOf(406)).expectBody(MessageDto.class).returnResult().getResponseBody();
+				.bodyValue(new SignInForm(loginId, password)).exchange()
+				.expectStatus().isEqualTo(HttpStatusCode.valueOf(406))
+				.expectBody(MessageDto.class).returnResult().getResponseBody();
 
 		assertThat(result).extracting(MessageDto::type).isEqualTo(Type.Validation);
 		assertThat(result).extracting(MessageDto::messages).asList()
@@ -59,7 +62,7 @@ public class SecurityApiSignInTest {
 	@Order(2)
 	@ParameterizedTest
 	@CsvSource({ 
-		"admins,admin,Please check your login id.",
+		"Admin,admin,Please check your login id.",
 		"admin,Admin,Please check your password."
 		})
 	void test_sign_in_auth_failure(String loginId, String password, String messages) {

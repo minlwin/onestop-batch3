@@ -29,7 +29,10 @@ public class Account implements Serializable{
 	@Column(nullable = false)
 	private String name;
 	
-	@Column(name = "login_id", nullable = false, unique = true)
+	@Column(
+			name = "login_id", 
+			columnDefinition = "varbinary(125)",
+			nullable = false, unique = true)
 	private String loginId;
 	
 	@Column(nullable = false)
