@@ -23,7 +23,7 @@
     </div>
   </form>
 
-  <widget-no-data name="Member"></widget-no-data>
+  <widget-no-data *ngIf="!list.length" name="Member"></widget-no-data>
 
   <table *ngIf="list.length > 0" class="table table-striped">
     <thead>

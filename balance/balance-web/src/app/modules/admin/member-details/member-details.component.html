@@ -4,32 +4,32 @@
     <div class="row mb-3">
       <div class="col">
         <label class="form-label">Name</label>
-        <span class="form-control">{{dto.name}}</span>
+        <span class="form-control">{{dto?.name}}</span>
       </div>
       <div class="col">
         <label class="form-label">Login Id</label>
-        <span class="form-control">{{dto.loginId}}</span>
+        <span class="form-control">{{dto?.loginId}}</span>
       </div>
     </div>
 
     <div class="row mb-3">
       <div class="col">
         <label class="form-label">Phone</label>
-        <span class="form-control">{{dto.phone}}</span>
+        <span class="form-control">{{dto?.phone || 'No Phone'}}</span>
       </div>
       <div class="col">
         <label class="form-label">Email</label>
-        <span class="form-control">{{dto.email}}</span>
+        <span class="form-control">{{dto?.email || 'No Email'}}</span>
       </div>
     </div>
     <div class="row mb-3">
       <div class="col">
         <label class="form-label">Registration Date</label>
-        <span class="form-control">{{dto.registDate}}</span>
+        <span class="form-control">{{dto?.registDate}}</span>
       </div>
       <div class="col">
         <label class="form-label">Status</label>
-        <span class="form-control">{{dto.status}}</span>
+        <span class="form-control">{{dto?.status}}</span>
       </div>
     </div>
 

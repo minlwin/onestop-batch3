@@ -1,6 +1,7 @@
 package com.jdc.balance;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 import com.jdc.balance.security.AppTokenFilter;
@@ -26,6 +30,8 @@ public class BalanceAppSecurityConfig {
 	
 	@Autowired
 	private AppTokenFilter appTokenFilter;
+	@Value("${app.token.name}")
+	private String tokenName;
 	
 	@Bean
 	HandlerMappingIntrospector mvcHandlerMappingIntrospector() {
@@ -45,7 +51,7 @@ public class BalanceAppSecurityConfig {
 	@Bean
 	SecurityFilterChain configure(HttpSecurity http) throws Exception {
 		
-		http.cors(cors -> cors.and());
+		http.cors(cors -> cors.configurationSource(configurationSource()));
 		
 		http.csrf(csrf -> csrf.disable());
 		
@@ -62,4 +68,18 @@ public class BalanceAppSecurityConfig {
 		
 		return http.build();
 	}
+	
+	CorsConfigurationSource configurationSource() {
+		
+		CorsConfiguration conf = new CorsConfiguration();
+		conf.applyPermitDefaultValues();
+		
+		conf.addAllowedHeader(tokenName);
+		conf.addExposedHeader(tokenName);
+
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", conf);
+		return source;
+	}
+	
 }
