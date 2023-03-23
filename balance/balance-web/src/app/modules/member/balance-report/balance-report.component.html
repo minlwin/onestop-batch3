@@ -38,9 +38,9 @@
         </td>
         <td>{{item.ledger.type}}</td>
         <td>{{item.ledger.name}}</td>
-        <td class="text-end">100,000</td>
-        <td class="text-end">0</td>
-        <td class="text-end">100,000</td>
+        <td class="text-end">{{(item.ledger.type == 'Credit' ? item.total : 0) | number}}</td>
+        <td class="text-end">{{(item.ledger.type == 'Debit' ? item.total : 0) | number}}</td>
+        <td class="text-end">{{item.balance | number}}</td>
       </tr>
 
     </tbody>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SecurityUserInfo } from 'src/app/services/security.user.info';
 
 @Component({
   selector: 'app-admin',
@@ -9,11 +10,12 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent {
 
-  constructor(private router:Router) {
+  constructor(private router:Router, private security:SecurityUserInfo) {
 
   }
 
   logOut() {
+    this.security.logOut()
     this.router.navigate(['/'])
   }
 }

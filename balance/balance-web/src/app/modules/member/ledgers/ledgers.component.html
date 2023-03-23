@@ -1,9 +1,9 @@
 <widget-top-page title="Ledger Management" icon="bi-bookmark" [search]="true">
 
-  <form searchBar class="row">
+  <form [formGroup]="searchForm" searchBar class="row">
     <div class="col-3">
       <label class="form-label">Ledger Type</label>
-      <select class="form-select">
+      <select formControlName="type" class="form-select">
         <option value="">All Type</option>
         <option value="Credit">Credit</option>
         <option value="Debit">Debit</option>

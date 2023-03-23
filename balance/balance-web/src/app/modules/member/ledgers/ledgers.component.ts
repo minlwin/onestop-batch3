@@ -12,11 +12,17 @@ export class LedgersComponent {
 
   list:any[] = []
   form:FormGroup
+  searchForm:FormGroup
 
   @ViewChild(ModalDialogComponent)
   dialog?:ModalDialogComponent
 
   constructor(builder:FormBuilder, private service:LedgerService) {
+
+    this.searchForm = builder.group({
+      type: ''
+    })
+
     this.form = builder.group({
       id: 0,
       type: ['', Validators.required],
@@ -27,7 +33,7 @@ export class LedgersComponent {
   }
 
   search() {
-    this.service.search({}).subscribe(result => this.list = result)
+    this.service.search(this.searchForm.value).subscribe(result => this.list = result)
   }
 
   upload(file:FileList | null) {

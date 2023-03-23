@@ -31,7 +31,7 @@ export class SignUpComponent {
         // Save Login Result to Share ammong modules
         this.securityContext.loginUser = result
         // Navigate their homes
-        this.router.navigate([result?.role?.toString().toLowerCase() || 'anonymous'])
+        this.router.navigate(["/", result?.role?.toString().toLowerCase() || 'anonymous'])
       })
     }
   }

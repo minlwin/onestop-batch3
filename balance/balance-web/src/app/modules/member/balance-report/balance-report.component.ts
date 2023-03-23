@@ -10,7 +10,7 @@ import { BalanceService } from 'src/app/services/balance.service';
 export class BalanceReportComponent {
 
   form:FormGroup
-  list:any[] = []
+  dto:any
 
   constructor(builder:FormBuilder, private service:BalanceService) {
     this.form = builder.group({
@@ -21,7 +21,11 @@ export class BalanceReportComponent {
 
   search() {
     this.service.searchReport(this.form.value).subscribe(result => {
-      this.list = result.list
+      this.dto = result
     })
+  }
+
+  get list():any[] {
+    return this.dto?.list || []
   }
 }

@@ -37,6 +37,7 @@ export class SecurityUserInfo {
 
   logOut() {
     this._user = undefined
+    this._token = undefined
     localStorage.clear()
   }
 

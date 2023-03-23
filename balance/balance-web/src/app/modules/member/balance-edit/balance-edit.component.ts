@@ -95,7 +95,12 @@ export class BalanceEditComponent {
 
     if(target) {
       const item = target as FormGroup
-      item.patchValue({deleted : true})
+
+      if(item.get('id')?.value) {
+        item.patchValue({deleted : true})
+      } else {
+        this.items.removeAt(index)
+      }
     }
 
     const array = this.items.value as any[]
