@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BalanceService } from 'src/app/services/balance.service';
+import { BalanceService } from 'src/app/services/api/balance.service';
 
 @Component({
   templateUrl: './balance-details.component.html',

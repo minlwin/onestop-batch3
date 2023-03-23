@@ -31,7 +31,7 @@ public class ExceptionHandlers {
 	}
 	
 	@ExceptionHandler
-	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	public MessageDto handle(EntityNotFoundException e) {
 		return new MessageDto(Type.Business, List.of(e.getMessage()));
 	}

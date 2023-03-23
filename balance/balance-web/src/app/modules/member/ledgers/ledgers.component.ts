@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LedgerService } from 'src/app/services/ledger.service';
+import { LedgerService } from 'src/app/services/api/ledger.service';
 import { ModalDialogComponent } from '../../utilities/modal-dialog/modal-dialog.component';
 
 @Component({

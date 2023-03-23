@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BalanceService } from 'src/app/services/balance.service';
-import { LedgerService } from 'src/app/services/ledger.service';
+import { BalanceService } from 'src/app/services/api/balance.service';
+import { LedgerService } from 'src/app/services/api/ledger.service';
 
 @Component({
   templateUrl: './balance-edit.component.html',

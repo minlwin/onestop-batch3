@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AccountService } from 'src/app/services/account.service';
+import { AccountService } from 'src/app/services/api/account.service';
 
 @Component({
   templateUrl: './members.component.html',

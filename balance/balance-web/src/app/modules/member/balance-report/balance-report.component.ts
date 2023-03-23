@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { BalanceService } from 'src/app/services/balance.service';
+import { BalanceService } from 'src/app/services/api/balance.service';
 
 @Component({
   templateUrl: './balance-report.component.html',

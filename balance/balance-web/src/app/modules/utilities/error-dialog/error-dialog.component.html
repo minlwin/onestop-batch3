@@ -1,0 +1,22 @@
+<div class="modal fade" id="commonErrorDialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5><i class="bi bi-info-lg"></i> {{type}} Error</h5>
+      </div>
+
+      <div class="modal-body">
+        <ul>
+          <li *ngFor="let item of messages">{{item}}</li>
+        </ul>
+      </div>
+
+      <div class="modal-footer">
+        <button (click)="close()" class="btn btn-outline-secondary">
+          <i class="bi bi-check-lg"></i> OK
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

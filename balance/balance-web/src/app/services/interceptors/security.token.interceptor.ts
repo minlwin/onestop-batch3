@@ -1,7 +1,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, tap } from "rxjs";
-import { SecurityUserInfo } from "./security.user.info";
+import { SecurityUserInfo } from "../security.user.info";
 
 const SECURITY_TOKEN = 'jdc-web-token'
 

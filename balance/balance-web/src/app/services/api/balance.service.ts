@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BASE_API } from ".";
+import { BASE_API } from "..";
 
 const API = `${BASE_API}/balance`
 

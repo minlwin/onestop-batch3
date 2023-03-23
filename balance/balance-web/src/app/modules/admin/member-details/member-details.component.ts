@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AccountService } from 'src/app/services/account.service';
+import { AccountService } from 'src/app/services/api/account.service';
 import { SecurityUserInfo } from 'src/app/services/security.user.info';
 
 @Component({
