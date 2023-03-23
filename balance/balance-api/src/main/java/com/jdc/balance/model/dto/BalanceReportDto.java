@@ -1,5 +1,11 @@
 package com.jdc.balance.model.dto;
 
-public record BalanceReportDto() {
+import java.util.List;
+
+public record BalanceReportDto(
+		long lastBlance,
+		long netBalance,
+		List<BalanceReportItemDto> list
+		) {
 
 }

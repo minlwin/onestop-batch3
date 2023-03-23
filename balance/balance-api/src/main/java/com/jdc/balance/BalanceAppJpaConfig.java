@@ -46,7 +46,7 @@ public class BalanceAppJpaConfig {
 		bean.setPackagesToScan("com.jdc.balance.model.entity");
 		bean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
 		bean.setJpaPropertyMap(Map.of(
-			"hibernate.hbm2ddl.auto", "create",
+			"hibernate.hbm2ddl.auto", "update",
 			"hibernate.show_sql", "true",
 			"hibernate.format_sql", "true"
 		));
