@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -29,6 +31,7 @@ import com.jdc.balance.model.form.LedgerForm;
 		"classpath:/sql/test_users.sql",
 		"classpath:/sql/test_ledgers.sql",
 })
+@TestMethodOrder(value = OrderAnnotation.class)
 public class LedgerApiCreateTest {
 
 	private WebTestClient client;

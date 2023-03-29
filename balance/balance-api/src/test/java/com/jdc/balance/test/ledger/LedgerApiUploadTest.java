@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatusCode;
@@ -25,6 +27,7 @@ import com.jdc.balance.model.dto.UploadResultDto;
 @ActiveProfiles("local")
 @WithMockUser(username = "test", authorities = "Member")
 @Sql(scripts = { "classpath:/sql/test_users.sql", "classpath:/sql/test_ledgers.sql", })
+@TestMethodOrder(value = OrderAnnotation.class)
 public class LedgerApiUploadTest {
 
 	private WebTestClient client;
