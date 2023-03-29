@@ -68,7 +68,7 @@ Listing Docker Image
 	docker image ls -a
 </pre>
 
-Runnint Docker Image for Balance API Container
+Running Docker Image for Balance API Container
 
 <pre>
 	docker run -d --network balance \
@@ -76,3 +76,5 @@ Runnint Docker Image for Balance API Container
 		-e TZ="Asia/Yangon" \
 		minlwin/balance-api
 </pre>
+
+After Running Balance API Container, please access to Balance DB Container and check database again. 
