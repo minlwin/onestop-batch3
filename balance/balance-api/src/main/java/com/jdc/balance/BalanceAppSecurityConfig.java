@@ -18,7 +18,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 import com.jdc.balance.security.AppTokenFilter;
 
@@ -31,11 +30,6 @@ public class BalanceAppSecurityConfig {
 	private AppTokenFilter appTokenFilter;
 	@Value("${app.token.name}")
 	private String tokenName;
-	
-	@Bean
-	HandlerMappingIntrospector mvcHandlerMappingIntrospector() {
-		return new HandlerMappingIntrospector();
-	}
 	
 	@Bean
 	PasswordEncoder passwordEncoder() {
