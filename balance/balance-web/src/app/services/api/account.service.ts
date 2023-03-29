@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BASE_API } from "..";
+import { environment } from "src/environments/environment";
 
-const API = `${BASE_API}/account`
+const API = `${environment.baseApi}/account`
 
 @Injectable({providedIn: 'any'})
 export class AccountService {

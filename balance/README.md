@@ -78,3 +78,21 @@ Running Docker Image for Balance API Container
 </pre>
 
 After Running Balance API Container, please access to Balance DB Container and check database again. 
+
+## Balance Web
+
+Build docker image from Dockerfile
+
+<pre>
+	docker build --platform=linux/arm64/v8 -t [username]/balance-web .
+</pre>
+
+You need to run docker container from docker image.
+
+<pre>
+	docker run -d --network balance  --name balance-web -e TZ="Asia/Yangon" -p 80:80 minlwin/balance-web
+</pre>
+
+After running docker container for web app, you can access application from http://localhost.
+
+Ok! Try it out!

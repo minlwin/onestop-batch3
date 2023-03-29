@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BASE_API } from "..";
+import { environment } from "src/environments/environment";
 
-const API = `${BASE_API}/ledger`
+const API = `${environment.baseApi}/ledger`
 
 @Injectable({providedIn: 'any'})
 export class LedgerService {
