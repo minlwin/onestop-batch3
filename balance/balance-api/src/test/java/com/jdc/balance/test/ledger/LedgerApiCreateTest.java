@@ -8,7 +8,10 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.client.MockMvcWebTestClient;
@@ -19,6 +22,9 @@ import com.jdc.balance.model.dto.MessageDto;
 import com.jdc.balance.model.dto.MessageDto.Type;
 import com.jdc.balance.model.form.LedgerForm;
 
+@SpringBootTest
+@ActiveProfiles("local")
+@WithMockUser(username = "test", authorities = "Member")
 @Sql(scripts = {
 		"classpath:/sql/test_users.sql",
 		"classpath:/sql/test_ledgers.sql",

@@ -3,6 +3,9 @@ package com.jdc.balance.test.ledger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.client.MockMvcWebTestClient;
@@ -10,6 +13,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.jdc.balance.model.form.LedgerForm;
 
+@SpringBootTest
+@ActiveProfiles("local")
+@WithMockUser(username = "other", authorities = "Member")
 @Sql(scripts = {
 		"classpath:/sql/test_users.sql",
 		"classpath:/sql/test_ledgers.sql",

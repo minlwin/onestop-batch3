@@ -20,7 +20,7 @@ public class BalanceItem implements Serializable{
 
 	@Id
 	@GeneratedValue(generator = "BALANCE_ITEM_SEQ")
-	@TableGenerator(name = "BALANCE_ITEM_SEQ", allocationSize = 1, initialValue = 0)
+	@TableGenerator(name = "BALANCE_ITEM_SEQ", pkColumnValue = "BALANCE_ITEM", allocationSize = 1, initialValue = 0)
 	private long id;
 	
 	@ManyToOne(optional = false)

@@ -3,10 +3,15 @@ package com.jdc.balance.test.ledger;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.client.MockMvcWebTestClient;
@@ -17,10 +22,14 @@ import com.jdc.balance.model.dto.MessageDto;
 import com.jdc.balance.model.dto.MessageDto.Type;
 import com.jdc.balance.model.form.LedgerForm;
 
+@SpringBootTest
+@ActiveProfiles("local")
+@WithMockUser(username = "test", authorities = "Member")
 @Sql(scripts = {
 		"classpath:/sql/test_users.sql",
 		"classpath:/sql/test_ledgers.sql",
 })
+@TestMethodOrder(value = OrderAnnotation.class)
 public class LedgerApiUpdateTest {
 
 	private WebTestClient client;
@@ -42,7 +51,7 @@ public class LedgerApiUpdateTest {
 				.uri("/ledger")
 				.bodyValue(new LedgerForm(id, type, name))
 				.exchange()
-				.expectStatus().isNoContent()
+				.expectStatus().isBadRequest()
 				.expectBody(MessageDto.class)
 				.returnResult()
 				.getResponseBody();

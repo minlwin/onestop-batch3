@@ -22,7 +22,7 @@ public class Ledger implements Serializable{
 	
 	@Id
 	@GeneratedValue(generator = "LEDGER_SEQ")
-	@TableGenerator(name = "LEDGER_SEQ", allocationSize = 1, initialValue = 0)
+	@TableGenerator(name = "LEDGER_SEQ", pkColumnValue = "LEDGER", allocationSize = 1, initialValue = 0)
 	private int id;
 	
 	@Column(nullable = false)
