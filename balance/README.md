@@ -42,7 +42,7 @@ Running Balance Database Docker Container from Docker Image
 	docker container rm balance-db
 </pre>
 
-## Accessing Database on Docker Container
+### Accessing Database on Docker Container
 
 <pre>
 	# Access to container with b shell
@@ -50,4 +50,29 @@ Running Balance Database Docker Container from Docker Image
 
 	# Using PSQL in Container
 	psql -U balance_usr balance_db
+</pre>
+
+## Balance API
+
+Building Docker Image from Dockerfile
+
+<pre>
+	cd balance-api
+	mvn install
+	docker build -t [username]/balance-api .
+</pre>
+
+Listing Docker Image
+
+<pre>
+	docker image ls -a
+</pre>
+
+Runnint Docker Image for Balance API Container
+
+<pre>
+	docker run -d --network balance \
+		--name balance-api \
+		-e TZ="Asia/Yangon" \
+		minlwin/balance-api
 </pre>
