@@ -11,7 +11,9 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.client.MockMvcWebTestClient;
 import org.springframework.web.context.WebApplicationContext;
@@ -22,6 +24,8 @@ import com.jdc.balance.model.dto.MessageDto.Type;
 import com.jdc.balance.model.dto.Role;
 import com.jdc.balance.model.form.SignInForm;
 
+@SpringBootTest
+@ActiveProfiles("local")
 @TestMethodOrder(value = OrderAnnotation.class)
 public class SecurityApiSignInTest {
 

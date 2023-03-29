@@ -6,7 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.client.MockMvcWebTestClient;
@@ -18,6 +20,8 @@ import com.jdc.balance.model.dto.MessageDto;
 import com.jdc.balance.model.dto.MessageDto.Type;
 import com.jdc.balance.model.form.AccountStatusForm;
 
+@SpringBootTest
+@ActiveProfiles("local")
 @Sql(scripts = {
 		"classpath:/sql/test_users.sql",
 })
@@ -36,7 +40,7 @@ public class AccountApiUpdateStatusTest {
 	void test_update_status_not_found(int id) {
 		var result = client.put().uri("/account/status")
 				.bodyValue(new AccountStatusForm(id, AccountStatus.Approved)).exchange()
-				.expectStatus().isNoContent()
+				.expectStatus().isBadRequest()
 				.expectBody(MessageDto.class)
 				.returnResult()
 				.getResponseBody();
