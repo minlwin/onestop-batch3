@@ -1,84 +1,52 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.0.5</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>	
 	<groupId>com.jdc</groupId>
 	<artifactId>balance-api</artifactId>
 	<version>1.0</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<dependencies>
-		<!-- Web Dependencies -->
-		<dependency>
-			<groupId>jakarta.servlet</groupId>
-			<artifactId>jakarta.servlet-api</artifactId>
-			<version>6.0.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>6.0.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aspects</artifactId>
-			<version>6.0.6</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.14.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-jsr310</artifactId>
-			<version>2.14.2</version>
-		</dependency>
+		
 		<!-- Database Dependencies -->
 		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-jpa</artifactId>
-			<version>3.0.3</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		
+		<!-- Web Dependencies -->
 		<dependency>
-			<groupId>org.hibernate.orm</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>6.1.7.Final</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
+		<!-- Security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>		
 		
 		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>
 		    <groupId>org.postgresql</groupId>
 		    <artifactId>postgresql</artifactId>
-		    <version>42.6.0</version>
 		</dependency>
 
-		<dependency>
-			<groupId>commons-dbcp</groupId>
-			<artifactId>commons-dbcp</artifactId>
-			<version>1.4</version>
-		</dependency>
 		<!-- Bean Validation Dependencies -->
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>8.0.0.Final</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.26</version>
 		</dependency>
 		
-		<!-- Security -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>6.0.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<version>6.0.2</version>
-		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api -->
 		<dependency>
 		    <groupId>io.jsonwebtoken</groupId>
@@ -100,100 +68,43 @@
 		    <scope>runtime</scope>
 		</dependency>
 				
-		<!-- Test Dependencies -->
 		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.9.2</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.9.2</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-params</artifactId>
-			<version>5.9.2</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite-engine -->
-		<dependency>
-		    <groupId>org.junit.platform</groupId>
-		    <artifactId>junit-platform-suite-engine</artifactId>
-		    <version>1.9.2</version>
-		    <scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>6.0.6</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
-			<version>6.0.2</version>
-			<scope>test</scope>
-		</dependency>
-				
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webflux</artifactId>
-			<version>6.0.6</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>jakarta.el</groupId>
-			<artifactId>jakarta.el-api</artifactId>
-			<version>5.0.1</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>jakarta.el</artifactId>
-			<version>5.0.0-M1</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<version>3.24.2</version>
 			<scope>test</scope>
 		</dependency>
 						
 	</dependencies>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.10.1</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<release>17</release>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
 				</configuration>
 			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>3.3.2</version>
+				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<skipTests>true</skipTests>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>11.0.14</version>
 			</plugin>
 		</plugins>
 	</build>

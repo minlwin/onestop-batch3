@@ -12,23 +12,17 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.client.MockMvcWebTestClient;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.jdc.balance.BalanceAppJpaConfig;
-import com.jdc.balance.BalanceAppSecurityConfig;
-import com.jdc.balance.BalanceAppWebConfig;
 import com.jdc.balance.model.dto.LoginUserDto;
 import com.jdc.balance.model.dto.MessageDto;
-import com.jdc.balance.model.dto.Role;
 import com.jdc.balance.model.dto.MessageDto.Type;
+import com.jdc.balance.model.dto.Role;
 import com.jdc.balance.model.form.SignInForm;
 
 @TestMethodOrder(value = OrderAnnotation.class)
-@SpringJUnitWebConfig(classes = { BalanceAppJpaConfig.class, BalanceAppSecurityConfig.class,
-		BalanceAppWebConfig.class })
 public class SecurityApiSignInTest {
 
 	WebTestClient client;

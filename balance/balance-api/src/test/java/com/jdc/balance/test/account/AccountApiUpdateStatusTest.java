@@ -7,28 +7,17 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.client.MockMvcWebTestClient;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.jdc.balance.BalanceAppJpaConfig;
-import com.jdc.balance.BalanceAppSecurityConfig;
-import com.jdc.balance.BalanceAppWebConfig;
 import com.jdc.balance.model.dto.AccountDto;
 import com.jdc.balance.model.dto.AccountStatus;
 import com.jdc.balance.model.dto.MessageDto;
 import com.jdc.balance.model.dto.MessageDto.Type;
 import com.jdc.balance.model.form.AccountStatusForm;
 
-@WithMockUser(username = "admin", authorities = "Admin")
-@SpringJUnitWebConfig(classes = {
-		BalanceAppJpaConfig.class,
-		BalanceAppSecurityConfig.class,
-		BalanceAppWebConfig.class
-})
 @Sql(scripts = {
 		"classpath:/sql/test_users.sql",
 })
