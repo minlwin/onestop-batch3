@@ -1,4 +1,4 @@
-FROM openjdk:17-alpine
+FROM azul/zulu-openjdk-alpine:17-latest
 
 RUN apk update && apk add --no-cache tzdata
 
