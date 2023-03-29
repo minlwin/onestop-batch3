@@ -31,7 +31,6 @@ public class Account implements Serializable{
 	
 	@Column(
 			name = "login_id", 
-			columnDefinition = "varbinary(125)",
 			nullable = false, unique = true)
 	private String loginId;
 	
